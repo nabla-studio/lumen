@@ -1,0 +1,407 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 14px;
+  /* Light mode colors */
+  --background: #ffffff;
+  --foreground: #0a0a0f;
+  --card: #f8f9fa;
+  --card-foreground: #0a0a0f;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0f;
+  --primary: #0066cc;
+  --primary-foreground: #ffffff;
+  --secondary: #e9ecef;
+  --secondary-foreground: #0a0a0f;
+  --muted: #f1f3f4;
+  --muted-foreground: #6c757d;
+  --accent: #00a65a;
+  --accent-foreground: #ffffff;
+  --destructive: #dc3545;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 102, 204, 0.2);
+  --input: #f8f9fa;
+  --input-background: #f8f9fa;
+  --switch-background: #e9ecef;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #0066cc;
+  --chart-1: #0066cc;
+  --chart-2: #00a65a;
+  --chart-3: #ff6b6b;
+  --chart-4: #ffd93d;
+  --chart-5: #6c5ce7;
+  --radius: 0.75rem;
+  --sidebar: #f8f9fa;
+  --sidebar-foreground: #0a0a0f;
+  --sidebar-primary: #0066cc;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e9ecef;
+  --sidebar-accent-foreground: #0a0a0f;
+  --sidebar-border: rgba(0, 102, 204, 0.2);
+  --sidebar-ring: #0066cc;
+}
+
+.dark {
+  /* Dark mode colors */
+  --background: #0a0a0f;
+  --foreground: #ffffff;
+  --card: #151520;
+  --card-foreground: #ffffff;
+  --popover: #151520;
+  --popover-foreground: #ffffff;
+  --primary: #00d4ff;
+  --primary-foreground: #0a0a0f;
+  --secondary: #1a1a2e;
+  --secondary-foreground: #ffffff;
+  --muted: #2a2a3e;
+  --muted-foreground: #a0a0b0;
+  --accent: #00ff88;
+  --accent-foreground: #0a0a0f;
+  --destructive: #ff4757;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 212, 255, 0.2);
+  --input: #1a1a2e;
+  --ring: #00d4ff;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: #00d4ff;
+  --chart-2: #00ff88;
+  --chart-3: #ff6b6b;
+  --chart-4: #ffd93d;
+  --chart-5: #6c5ce7;
+  --sidebar: #0f0f1a;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #00d4ff;
+  --sidebar-primary-foreground: #0a0a0f;
+  --sidebar-accent: #1a1a2e;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(0, 212, 255, 0.2);
+  --sidebar-ring: #00d4ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+
+  /* Light mode background */
+  :root body {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    min-height: 100vh;
+  }
+
+  /* Dark mode background */
+  .dark body {
+    background: linear-gradient(135deg, #0a0a0f 0%, #151520 100%);
+    min-height: 100vh;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+.glow-effect {
+  box-shadow: 0 0 20px rgba(var(--primary), 0.3);
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Light mode card glow */
+:root .card-glow {
+  background: linear-gradient(145deg, rgba(248, 249, 250, 0.9), rgba(233, 236, 239, 0.9));
+  border: 1px solid rgba(0, 102, 204, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 102, 204, 0.1);
+}
+
+/* Dark mode card glow */
+.dark .card-glow {
+  background: linear-gradient(145deg, rgba(21, 21, 32, 0.8), rgba(26, 26, 46, 0.8));
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+}
+
+.solar-gradient {
+  background: linear-gradient(135deg, #ffd93d 0%, #ff6b6b 100%);
+}
+
+.energy-gradient {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+}
+
+/* Theme toggle animations */
+.theme-toggle {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+}
+
+/* Gaming map effects */
+.gaming-grid {
+  background-image: 
+    linear-gradient(rgba(6, 182, 212, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.3) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: grid-move 10s linear infinite;
+}
+
+@keyframes grid-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 20px 20px; }
+}
+
+/* Neon glow effects */
+.neon-glow {
+  box-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px currentColor;
+}
+
+.cyber-border {
+  border: 2px solid;
+  border-image: linear-gradient(45deg, #00d4ff, #00ff88, #00d4ff) 1;
+  position: relative;
+}
+
+.cyber-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #00d4ff, #00ff88, #00d4ff);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.5;
+  filter: blur(4px);
+}
+
+/* Mobile touch optimizations */
+@media (max-width: 768px) {
+  .touch-friendly {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .mobile-card {
+    border-radius: 12px;
+    padding: 1rem;
+  }
+  
+  .mobile-grid {
+    gap: 0.75rem;
+  }
+  
+  /* Gaming mobile interface */
+  .mobile-gaming-ui {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(26, 26, 46, 0.8));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+  }
+
+  /* Disable animations and animated effects on mobile for better performance */
+  .gaming-grid {
+    animation: none !important;
+    background-image: none !important;
+  }
+
+  .neon-glow {
+    box-shadow: none !important;
+  }
+
+  .cyber-border::before {
+    display: none !important;
+  }
+
+  /* Disable pulsing animations on mobile */
+  .animate-pulse {
+    animation: none !important;
+  }
+
+  /* Disable any animated elements that might create colored dots */
+  [class*="animate-"] {
+    animation: none !important;
+  }
+
+  /* Remove any potential floating colored elements */
+  .fixed[class*="rounded-full"][class*="blur-"] {
+    display: none !important;
+  }
+}
+
+/* Parallax smooth animations */
+.parallax-smooth {
+  transition: transform 0.1s ease-out;
+}
+
+/* Custom scrollbar for mobile */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(26, 26, 46, 0.5);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00d4ff, #00ff88);
+    border-radius: 2px;
+  }
+}
+
+/* Horizontal Scrollbar Hide */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Glass morphism effects */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.dark .glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* 3D Hover Effects */
+.card-3d {
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.card-3d:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(20px);
+}
+
+/* Custom bar chart hover effects */
+.recharts-bar:hover {
+  filter: brightness(1.2) drop-shadow(0 0 8px rgba(0, 212, 255, 0.5));
+  transition: all 0.3s ease;
+}
+
+.recharts-bar {
+  transition: all 0.3s ease;
+}
