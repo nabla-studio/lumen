@@ -1,6 +1,6 @@
-# Monorepo Template
+# Lumen
 
-A template to create a monorepo SST v3 project. [Learn more](https://sst.dev/docs/set-up-a-monorepo).
+Your next energy investment.
 
 ## Get started
 
