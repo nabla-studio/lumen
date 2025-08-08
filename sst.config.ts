@@ -3,19 +3,16 @@
 export default $config({
   app(input) {
     return {
-      name: "apollo",
+      name: "lumen",
       removal: input?.stage === "production" ? "retain" : "remove",
       protect: ["production"].includes(input?.stage),
       home: "aws",
     };
   },
   async run() {
-    const storage = await import("./infra/storage");
-    await import("./infra/api");
     const { webapp } = await import("./infra/app");
 
     return {
-      MyBucket: storage.bucket.name,
       WebApp: webapp.url
     };
   },
