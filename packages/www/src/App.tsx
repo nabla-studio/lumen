@@ -1,40 +1,3 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
-
-// function App() {
-//   const [count, setCount] = useState(0)
-
-//   return (
-//     <>
-//       <div>
-//         <a href="https://vite.dev" target="_blank">
-//           <img src={viteLogo} className="logo" alt="Vite logo" />
-//         </a>
-//         <a href="https://react.dev" target="_blank">
-//           <img src={reactLogo} className="logo react" alt="React logo" />
-//         </a>
-//       </div>
-//       <h1>Vite + React</h1>
-//       <div className="card">
-//         <button onClick={() => setCount((count) => count + 1)}>
-//           count is {count}
-//         </button>
-//         <p>
-//           Edit <code>src/App.tsx</code> and save to test HMR
-//         </p>
-//       </div>
-//       <p className="read-the-docs">
-//         Click on the Vite and React logos to learn more
-//       </p>
-//     </>
-//   )
-// }
-
-// export default App
-
-
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { ThemeProvider } from "./components/ThemeProvider";
@@ -102,9 +65,10 @@ function AppContent() {
     };
 
     checkIsMobile();
-    window.addEventListener('resize', checkIsMobile);
+    window.addEventListener("resize", checkIsMobile);
 
-    return () => window.removeEventListener('resize', checkIsMobile);
+    return () =>
+      window.removeEventListener("resize", checkIsMobile);
   }, []);
 
   const LaunchpadComponent = () => {
@@ -121,14 +85,16 @@ function AppContent() {
         riskLevel: "low",
         yield: "8.5%",
         rating: 4.8,
-        description: "Large-scale solar installation in prime Tuscan location with guaranteed 20-year PPA contract.",
+        description:
+          "Large-scale solar installation in prime Tuscan location with guaranteed 20-year PPA contract.",
         fundingProgress: 76,
         raised: "€950K",
         goal: "€1250K",
         investors: 234,
         deadline: "16/02/2025",
-        image: "/api/placeholder/400/200",
-        projectType: "solar"
+        image:
+          "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&h=400&fit=crop&crop=center",
+        projectType: "solar",
       },
       {
         id: 2,
@@ -139,14 +105,16 @@ function AppContent() {
         riskLevel: "medium",
         yield: "7.8%",
         rating: 4.6,
-        description: "Mountain solar project with innovative tracking systems and excellent irradiation levels.",
+        description:
+          "Mountain solar project with innovative tracking systems and excellent irradiation levels.",
         fundingProgress: 60,
         raised: "€450K",
         goal: "€900K",
         investors: 156,
         deadline: "01/03/2025",
-        image: "/api/placeholder/400/200",
-        projectType: "wind"
+        image:
+          "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&h=400&fit=crop&crop=center",
+        projectType: "wind",
       },
       {
         id: 3,
@@ -157,14 +125,16 @@ function AppContent() {
         riskLevel: "low",
         yield: "9.2%",
         rating: 4.9,
-        description: "Premium southern Italy location with highest solar irradiation and established grid connection.",
+        description:
+          "Premium southern Italy location with highest solar irradiation and established grid connection.",
         fundingProgress: 80,
         raised: "€1680K",
         goal: "€2100K",
         investors: 387,
         deadline: "30/01/2025",
-        image: "/api/placeholder/400/200",
-        projectType: "solar"
+        image:
+          "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=600&h=400&fit=crop&crop=center",
+        projectType: "solar",
       },
       {
         id: 4,
@@ -175,14 +145,16 @@ function AppContent() {
         riskLevel: "medium",
         yield: "8.9%",
         rating: 4.7,
-        description: "Coastal wind farm with consistent wind patterns and modern turbine technology.",
+        description:
+          "Coastal wind farm with consistent wind patterns and modern turbine technology.",
         fundingProgress: 45,
         raised: "€675K",
         goal: "€1500K",
         investors: 198,
         deadline: "15/03/2025",
-        image: "/api/placeholder/400/200",
-        projectType: "wind"
+        image:
+          "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&h=400&fit=crop&crop=center",
+        projectType: "wind",
       },
       {
         id: 5,
@@ -193,14 +165,16 @@ function AppContent() {
         riskLevel: "low",
         yield: "7.5%",
         rating: 4.5,
-        description: "Urban solar installation with battery storage and smart grid integration.",
+        description:
+          "Urban solar installation with battery storage and smart grid integration.",
         fundingProgress: 92,
         raised: "€828K",
         goal: "€900K",
         investors: 445,
         deadline: "10/02/2025",
-        image: "/api/placeholder/400/200",
-        projectType: "solar"
+        image:
+          "https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=600&h=400&fit=crop&crop=center",
+        projectType: "solar",
       },
       {
         id: 6,
@@ -211,21 +185,29 @@ function AppContent() {
         riskLevel: "medium",
         yield: "8.3%",
         rating: 4.4,
-        description: "Hybrid solar-wind project with innovative energy storage solutions.",
+        description:
+          "Hybrid solar-wind project with innovative energy storage solutions.",
         fundingProgress: 38,
         raised: "€532K",
         goal: "€1400K",
         investors: 167,
         deadline: "25/03/2025",
-        image: "/api/placeholder/400/200",
-        projectType: "hybrid"
-      }
+        image:
+          "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600&h=400&fit=crop&crop=center",
+        projectType: "hybrid",
+      },
     ];
 
-    const filteredProjects = solarProjects.filter(project => {
-      const matchesSearch = project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        project.location.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesFilter = filterBy === "all" || project.riskLevel === filterBy;
+    const filteredProjects = solarProjects.filter((project) => {
+      const matchesSearch =
+        project.name
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        project.location
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase());
+      const matchesFilter =
+        filterBy === "all" || project.riskLevel === filterBy;
       return matchesSearch && matchesFilter;
     });
 
@@ -252,9 +234,12 @@ function AppContent() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
           <div className="space-y-2">
-            <h1 className="text-3xl font-bold gradient-text">Solar Project Launchpad</h1>
+            <h1 className="text-3xl font-bold gradient-text">
+              Project Launchpad
+            </h1>
             <p className="text-muted-foreground">
-              Discover and invest in tokenized solar energy projects
+              Discover and invest in tokenized solar energy
+              projects
             </p>
           </div>
 
@@ -264,7 +249,7 @@ function AppContent() {
             className="bg-gradient-to-r from-primary to-accent hover:from-primary/80 hover:to-accent/80"
           >
             <Plus className="w-4 h-4 mr-2" />
-            Candidatura Progetto
+            Onboard Project
           </Button>
         </div>
 
@@ -281,14 +266,21 @@ function AppContent() {
           </div>
           <div className="flex items-center space-x-2">
             <Filter className="w-4 h-4 text-muted-foreground" />
-            <Select value={filterBy} onValueChange={setFilterBy}>
+            <Select
+              value={filterBy}
+              onValueChange={setFilterBy}
+            >
               <SelectTrigger className="w-48">
                 <SelectValue placeholder="All Projects" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All Projects</SelectItem>
+                <SelectItem value="all">
+                  All Projects
+                </SelectItem>
                 <SelectItem value="low">Low Risk</SelectItem>
-                <SelectItem value="medium">Medium Risk</SelectItem>
+                <SelectItem value="medium">
+                  Medium Risk
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -306,15 +298,14 @@ function AppContent() {
               <Card className="card-glow hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden">
                 <div className="relative">
                   {/* Project Image */}
-                  <div className="h-48 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center mb-2 mx-auto">
-                        {getProjectIcon(project.projectType)}
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        {project.projectType.charAt(0).toUpperCase() + project.projectType.slice(1)} Energy
-                      </p>
-                    </div>
+                  <div className="h-48 overflow-hidden relative">
+                    <ImageWithFallback
+                      src={project.image}
+                      alt={project.name}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    />
+                    {/* Overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20"></div>
                   </div>
 
                   {/* Risk Badge */}
@@ -340,14 +331,18 @@ function AppContent() {
                   {/* Rating */}
                   <div className="absolute bottom-3 left-3 flex items-center space-x-1 bg-background/80 backdrop-blur-sm rounded-full px-2 py-1">
                     <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                    <span className="text-sm font-medium">{project.rating}</span>
+                    <span className="text-sm font-medium">
+                      {project.rating}
+                    </span>
                   </div>
                 </div>
 
                 <CardContent className="p-4 space-y-4">
                   {/* Project Info */}
                   <div>
-                    <h3 className="font-semibold text-lg">{project.name}</h3>
+                    <h3 className="font-semibold text-lg">
+                      {project.name}
+                    </h3>
                     <div className="flex items-center space-x-1 text-sm text-muted-foreground">
                       <MapPin className="w-3 h-3" />
                       <span>{project.location}</span>
@@ -362,10 +357,17 @@ function AppContent() {
                   {/* Funding Progress */}
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Funding Progress</span>
-                      <span className="font-semibold">{project.fundingProgress}%</span>
+                      <span className="text-muted-foreground">
+                        Funding Progress
+                      </span>
+                      <span className="font-semibold">
+                        {project.fundingProgress}%
+                      </span>
                     </div>
-                    <Progress value={project.fundingProgress} className="h-2" />
+                    <Progress
+                      value={project.fundingProgress}
+                      className="h-2"
+                    />
                     <div className="flex justify-between text-sm">
                       <span className="font-semibold text-accent">
                         {project.raised} raised
@@ -394,7 +396,10 @@ function AppContent() {
                       <Euro className="w-4 h-4 mr-2" />
                       Invest Now
                     </Button>
-                    <Button variant="outline" className="flex-1">
+                    <Button
+                      variant="outline"
+                      className="flex-1 bg-[rgba(66,66,110,0.3)]"
+                    >
                       Details
                     </Button>
                   </div>
@@ -410,7 +415,9 @@ function AppContent() {
             <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
               <Search className="w-8 h-8 text-muted-foreground" />
             </div>
-            <h3 className="text-lg font-semibold mb-2">No projects found</h3>
+            <h3 className="text-lg font-semibold mb-2">
+              No projects found
+            </h3>
             <p className="text-muted-foreground">
               Try adjusting your search or filter criteria
             </p>
@@ -432,33 +439,67 @@ function AppContent() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className={`grid ${isMobile ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-3'} gap-4`}>
+            <div
+              className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-1 md:grid-cols-3"} gap-4`}
+            >
               {[
-                { name: "Ocean Breeze Solar", date: "Jan 28", participants: 1247, target: "50 USDC" },
-                { name: "Highland Energy", date: "Feb 2", participants: 892, target: "75 USDC" },
-                { name: "Sunrise Valley", date: "Feb 8", participants: 2341, target: "100 USDC" }
+                {
+                  name: "Ocean Breeze Solar",
+                  date: "Jan 28",
+                  participants: 1247,
+                  target: "1M USDC",
+                },
+                {
+                  name: "Highland Energy",
+                  date: "Feb 2",
+                  participants: 892,
+                  target: "1.5M USDC",
+                },
+                {
+                  name: "Sunrise Valley",
+                  date: "Feb 8",
+                  participants: 2341,
+                  target: "12M USDC",
+                },
               ].map((launch, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.1,
+                  }}
                   className="p-4 rounded-lg bg-secondary/50 hover:bg-secondary/70 transition-colors cursor-pointer"
                   whileTap={{ scale: 0.98 }}
                 >
-                  <h4 className={`font-semibold mb-2 ${isMobile ? 'text-sm' : ''}`}>{launch.name}</h4>
-                  <div className={`space-y-2 ${isMobile ? 'text-xs' : 'text-sm'}`}>
+                  <h4
+                    className={`font-semibold mb-2 ${isMobile ? "text-sm" : ""}`}
+                  >
+                    {launch.name}
+                  </h4>
+                  <div
+                    className={`space-y-2 ${isMobile ? "text-xs" : "text-sm"}`}
+                  >
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Launch Date</span>
+                      <span className="text-muted-foreground">
+                        Launch Date
+                      </span>
                       <span>{launch.date}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Participants</span>
+                      <span className="text-muted-foreground">
+                        Participants
+                      </span>
                       <span>{launch.participants}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Target</span>
-                      <span className="text-accent">{launch.target}</span>
+                      <span className="text-muted-foreground">
+                        Target
+                      </span>
+                      <span className="text-accent">
+                        {launch.target}
+                      </span>
                     </div>
                   </div>
                   <Button size="sm" className="w-full mt-3">
@@ -477,7 +518,8 @@ function AppContent() {
     const [searchTerm, setSearchTerm] = useState("");
     const [sortBy, setSortBy] = useState("recent");
     const [filterBy, setFilterBy] = useState("all");
-    const [showPurchaseModal, setShowPurchaseModal] = useState(false);
+    const [showPurchaseModal, setShowPurchaseModal] =
+      useState(false);
     const [selectedNFT, setSelectedNFT] = useState<any>(null);
     const [selectedCut, setSelectedCut] = useState(500);
     const [quantity, setQuantity] = useState(1);
@@ -488,201 +530,430 @@ function AppContent() {
         name: "Tuscany Solar Panel #247",
         collection: "SolarPark Tuscany Collection",
         tokenId: "#0247",
-        price: "2.5 USDC",
-        previousPrice: "2.2 USDC",
+        price: "25,500 USDC",
+        previousPrice: "22,800 USDC",
         priceChange: "+13.6%",
         rarity: "Rare",
-        powerGeneration: "152 KWh/month",
+        powerGeneration: "15.2 MWh/month",
         efficiency: "22.8%",
-        carbonOffset: "89.3 kg CO₂",
+        carbonOffset: "8,930 kg CO₂",
         owner: "0x1234...5678",
         likes: 42,
         views: 1247,
         timeRemaining: "2d 14h",
         auctionType: "timed",
         verified: true,
-        image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&h=400&fit=crop&crop=center",
+        image:
+          "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&h=400&fit=crop&crop=center",
         timeline: [
-          { phase: "Development", status: "completed", date: "Jan 2024", description: "Site preparation and permits" },
-          { phase: "Construction", status: "completed", date: "Mar 2024", description: "Solar panel installation" },
-          { phase: "Grid Connection", status: "in-progress", date: "Feb 2025", description: "Grid synchronization and testing" },
-          { phase: "Operations", status: "pending", date: "Mar 2025", description: "Full commercial operation" }
+          {
+            phase: "Development",
+            status: "completed",
+            date: "Jan 2024",
+            description: "Site preparation and permits",
+          },
+          {
+            phase: "Construction",
+            status: "completed",
+            date: "Mar 2024",
+            description: "Solar panel installation",
+          },
+          {
+            phase: "Grid Connection",
+            status: "in-progress",
+            date: "Feb 2025",
+            description: "Grid synchronization and testing",
+          },
+          {
+            phase: "Operations",
+            status: "pending",
+            date: "Mar 2025",
+            description: "Full commercial operation",
+          },
         ],
         cuts: [
-          { amount: 500, roi: "8.5%", yearlyReturn: "42.5 USDC" },
-          { amount: 1000, roi: "9.2%", yearlyReturn: "92.0 USDC" },
-          { amount: 2500, roi: "10.1%", yearlyReturn: "252.5 USDC" },
-          { amount: 5000, roi: "11.5%", yearlyReturn: "575.0 USDC" }
-        ]
+          {
+            amount: 50000,
+            roi: "8.5%",
+            yearlyReturn: "4,250 USDC",
+          },
+          {
+            amount: 100000,
+            roi: "9.2%",
+            yearlyReturn: "9,200 USDC",
+          },
+          {
+            amount: 250000,
+            roi: "10.1%",
+            yearlyReturn: "25,250 USDC",
+          },
+          {
+            amount: 500000,
+            roi: "11.5%",
+            yearlyReturn: "57,500 USDC",
+          },
+        ],
       },
       {
         id: 2,
         name: "Alpine Wind Turbine #089",
         collection: "Alpine Wind Farm",
         tokenId: "#0089",
-        price: "4.2 USDC",
-        previousPrice: "4.5 USDC",
+        price: "42,500 USDC",
+        previousPrice: "45,200 USDC",
         priceChange: "-6.7%",
         rarity: "Epic",
-        powerGeneration: "328 KWh/month",
+        powerGeneration: "32.8 MWh/month",
         efficiency: "94.2%",
-        carbonOffset: "195.7 kg CO₂",
+        carbonOffset: "19,570 kg CO₂",
         owner: "0x9876...4321",
         likes: 89,
         views: 2156,
         timeRemaining: "6h 32m",
         auctionType: "buyNow",
         verified: true,
-        image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=400&h=400&fit=crop&crop=center",
+        image:
+          "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=400&h=400&fit=crop&crop=center",
         timeline: [
-          { phase: "Development", status: "completed", date: "Dec 2023", description: "Environmental impact assessment" },
-          { phase: "Construction", status: "completed", date: "Jun 2024", description: "Turbine installation and testing" },
-          { phase: "Grid Connection", status: "completed", date: "Sep 2024", description: "Grid integration completed" },
-          { phase: "Operations", status: "completed", date: "Oct 2024", description: "Full commercial operation" }
+          {
+            phase: "Development",
+            status: "completed",
+            date: "Dec 2023",
+            description: "Environmental impact assessment",
+          },
+          {
+            phase: "Construction",
+            status: "completed",
+            date: "Jun 2024",
+            description: "Turbine installation and testing",
+          },
+          {
+            phase: "Grid Connection",
+            status: "completed",
+            date: "Sep 2024",
+            description: "Grid integration completed",
+          },
+          {
+            phase: "Operations",
+            status: "completed",
+            date: "Oct 2024",
+            description: "Full commercial operation",
+          },
         ],
         cuts: [
-          { amount: 500, roi: "7.8%", yearlyReturn: "39.0 USDC" },
-          { amount: 1000, roi: "8.5%", yearlyReturn: "85.0 USDC" },
-          { amount: 2500, roi: "9.2%", yearlyReturn: "230.0 USDC" },
-          { amount: 5000, roi: "10.8%", yearlyReturn: "540.0 USDC" }
-        ]
+          {
+            amount: 50000,
+            roi: "7.8%",
+            yearlyReturn: "3,900 USDC",
+          },
+          {
+            amount: 100000,
+            roi: "8.5%",
+            yearlyReturn: "8,500 USDC",
+          },
+          {
+            amount: 250000,
+            roi: "9.2%",
+            yearlyReturn: "23,000 USDC",
+          },
+          {
+            amount: 500000,
+            roi: "10.8%",
+            yearlyReturn: "54,000 USDC",
+          },
+        ],
       },
       {
         id: 3,
         name: "Mediterranean Solar Array #156",
         collection: "Puglia Solar Complex",
         tokenId: "#0156",
-        price: "1.8 USDC",
-        previousPrice: "1.6 USDC",
+        price: "18,750 USDC",
+        previousPrice: "16,400 USDC",
         priceChange: "+12.5%",
         rarity: "Common",
-        powerGeneration: "98 KWh/month",
+        powerGeneration: "9.8 MWh/month",
         efficiency: "21.3%",
-        carbonOffset: "58.4 kg CO₂",
+        carbonOffset: "5,840 kg CO₂",
         owner: "0x5555...7777",
         likes: 23,
         views: 892,
         timeRemaining: "1d 8h",
         auctionType: "timed",
         verified: true,
-        image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=400&h=400&fit=crop&crop=center",
+        image:
+          "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=400&h=400&fit=crop&crop=center",
         timeline: [
-          { phase: "Development", status: "completed", date: "Nov 2023", description: "Land acquisition and surveys" },
-          { phase: "Construction", status: "completed", date: "Apr 2024", description: "Solar farm construction" },
-          { phase: "Grid Connection", status: "completed", date: "Jul 2024", description: "Grid connection established" },
-          { phase: "Operations", status: "completed", date: "Aug 2024", description: "Full commercial operation" }
+          {
+            phase: "Development",
+            status: "completed",
+            date: "Nov 2023",
+            description: "Land acquisition and surveys",
+          },
+          {
+            phase: "Construction",
+            status: "completed",
+            date: "Apr 2024",
+            description: "Solar farm construction",
+          },
+          {
+            phase: "Grid Connection",
+            status: "completed",
+            date: "Jul 2024",
+            description: "Grid connection established",
+          },
+          {
+            phase: "Operations",
+            status: "completed",
+            date: "Aug 2024",
+            description: "Full commercial operation",
+          },
         ],
         cuts: [
-          { amount: 500, roi: "9.2%", yearlyReturn: "46.0 USDC" },
-          { amount: 1000, roi: "9.8%", yearlyReturn: "98.0 USDC" },
-          { amount: 2500, roi: "10.5%", yearlyReturn: "262.5 USDC" },
-          { amount: 5000, roi: "12.0%", yearlyReturn: "600.0 USDC" }
-        ]
+          {
+            amount: 50000,
+            roi: "9.2%",
+            yearlyReturn: "4,600 USDC",
+          },
+          {
+            amount: 100000,
+            roi: "9.8%",
+            yearlyReturn: "9,800 USDC",
+          },
+          {
+            amount: 250000,
+            roi: "10.5%",
+            yearlyReturn: "26,250 USDC",
+          },
+          {
+            amount: 500000,
+            roi: "12.0%",
+            yearlyReturn: "60,000 USDC",
+          },
+        ],
       },
       {
         id: 4,
         name: "Roma Smart Grid Node #034",
         collection: "Roma Solar District",
         tokenId: "#0034",
-        price: "3.7 USDC",
-        previousPrice: "3.7 USDC",
+        price: "37,500 USDC",
+        previousPrice: "37,500 USDC",
         priceChange: "0%",
         rarity: "Legendary",
-        powerGeneration: "275 KWh/month",
+        powerGeneration: "27.5 MWh/month",
         efficiency: "96.8%",
-        carbonOffset: "164.2 kg CO₂",
+        carbonOffset: "16,420 kg CO₂",
         owner: "0x2222...9999",
         likes: 156,
         views: 3428,
         timeRemaining: "4d 12h",
         auctionType: "auction",
         verified: true,
-        image: "https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=400&h=400&fit=crop&crop=center",
+        image:
+          "https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=400&h=400&fit=crop&crop=center",
         timeline: [
-          { phase: "Development", status: "completed", date: "Jan 2024", description: "Urban planning and permits" },
-          { phase: "Construction", status: "completed", date: "May 2024", description: "Smart grid infrastructure" },
-          { phase: "Grid Connection", status: "completed", date: "Aug 2024", description: "Advanced grid integration" },
-          { phase: "Operations", status: "completed", date: "Sep 2024", description: "Smart grid operations" }
+          {
+            phase: "Development",
+            status: "completed",
+            date: "Jan 2024",
+            description: "Urban planning and permits",
+          },
+          {
+            phase: "Construction",
+            status: "completed",
+            date: "May 2024",
+            description: "Smart grid infrastructure",
+          },
+          {
+            phase: "Grid Connection",
+            status: "completed",
+            date: "Aug 2024",
+            description: "Advanced grid integration",
+          },
+          {
+            phase: "Operations",
+            status: "completed",
+            date: "Sep 2024",
+            description: "Smart grid operations",
+          },
         ],
         cuts: [
-          { amount: 500, roi: "7.5%", yearlyReturn: "37.5 USDC" },
-          { amount: 1000, roi: "8.2%", yearlyReturn: "82.0 USDC" },
-          { amount: 2500, roi: "9.0%", yearlyReturn: "225.0 USDC" },
-          { amount: 5000, roi: "10.5%", yearlyReturn: "525.0 USDC" }
-        ]
+          {
+            amount: 50000,
+            roi: "7.5%",
+            yearlyReturn: "3,750 USDC",
+          },
+          {
+            amount: 100000,
+            roi: "8.2%",
+            yearlyReturn: "8,200 USDC",
+          },
+          {
+            amount: 250000,
+            roi: "9.0%",
+            yearlyReturn: "22,500 USDC",
+          },
+          {
+            amount: 500000,
+            roi: "10.5%",
+            yearlyReturn: "52,500 USDC",
+          },
+        ],
       },
       {
         id: 5,
         name: "Hybrid Energy Core #078",
         collection: "Adriatic Energy Hub",
         tokenId: "#0078",
-        price: "5.9 USDC",
-        previousPrice: "5.1 USDC",
+        price: "59,750 USDC",
+        previousPrice: "51,650 USDC",
         priceChange: "+15.7%",
         rarity: "Mythic",
-        powerGeneration: "412 KWh/month",
+        powerGeneration: "41.2 MWh/month",
         efficiency: "98.1%",
-        carbonOffset: "245.8 kg CO₂",
+        carbonOffset: "24,580 kg CO₂",
         owner: "0x8888...1111",
         likes: 234,
         views: 5672,
         timeRemaining: "12h 45m",
         auctionType: "buyNow",
         verified: true,
-        image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400&h=400&fit=crop&crop=center",
+        image:
+          "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400&h=400&fit=crop&crop=center",
         timeline: [
-          { phase: "Development", status: "completed", date: "Feb 2024", description: "Hybrid system design" },
-          { phase: "Construction", status: "in-progress", date: "Current", description: "Solar-wind hybrid installation" },
-          { phase: "Grid Connection", status: "pending", date: "Apr 2025", description: "Advanced grid synchronization" },
-          { phase: "Operations", status: "pending", date: "May 2025", description: "Hybrid operations start" }
+          {
+            phase: "Development",
+            status: "completed",
+            date: "Feb 2024",
+            description: "Hybrid system design",
+          },
+          {
+            phase: "Construction",
+            status: "in-progress",
+            date: "Current",
+            description: "Solar-wind hybrid installation",
+          },
+          {
+            phase: "Grid Connection",
+            status: "pending",
+            date: "Apr 2025",
+            description: "Advanced grid synchronization",
+          },
+          {
+            phase: "Operations",
+            status: "pending",
+            date: "May 2025",
+            description: "Hybrid operations start",
+          },
         ],
         cuts: [
-          { amount: 500, roi: "8.3%", yearlyReturn: "41.5 USDC" },
-          { amount: 1000, roi: "9.0%", yearlyReturn: "90.0 USDC" },
-          { amount: 2500, roi: "9.8%", yearlyReturn: "245.0 USDC" },
-          { amount: 5000, roi: "11.2%", yearlyReturn: "560.0 USDC" }
-        ]
+          {
+            amount: 50000,
+            roi: "8.3%",
+            yearlyReturn: "4,150 USDC",
+          },
+          {
+            amount: 100000,
+            roi: "9.0%",
+            yearlyReturn: "9,000 USDC",
+          },
+          {
+            amount: 250000,
+            roi: "9.8%",
+            yearlyReturn: "24,500 USDC",
+          },
+          {
+            amount: 500000,
+            roi: "11.2%",
+            yearlyReturn: "56,000 USDC",
+          },
+        ],
       },
       {
         id: 6,
         name: "Solar Tracker Pro #192",
         collection: "Alpine Solar Farm",
         tokenId: "#0192",
-        price: "2.1 USDC",
-        previousPrice: "2.3 USDC",
+        price: "21,250 USDC",
+        previousPrice: "23,100 USDC",
         priceChange: "-8.7%",
         rarity: "Rare",
-        powerGeneration: "187 KWh/month",
+        powerGeneration: "18.7 MWh/month",
         efficiency: "89.4%",
-        carbonOffset: "111.6 kg CO₂",
+        carbonOffset: "11,160 kg CO₂",
         owner: "0x4444...6666",
         likes: 67,
         views: 1834,
         timeRemaining: "3d 7h",
         auctionType: "timed",
         verified: false,
-        image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=400&fit=crop&crop=center",
+        image:
+          "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400&h=400&fit=crop&crop=center",
         timeline: [
-          { phase: "Development", status: "completed", date: "Mar 2024", description: "Tracking system design" },
-          { phase: "Construction", status: "completed", date: "Jul 2024", description: "Advanced tracker installation" },
-          { phase: "Grid Connection", status: "completed", date: "Oct 2024", description: "Grid connection active" },
-          { phase: "Operations", status: "completed", date: "Nov 2024", description: "Tracking operations active" }
+          {
+            phase: "Development",
+            status: "completed",
+            date: "Mar 2024",
+            description: "Tracking system design",
+          },
+          {
+            phase: "Construction",
+            status: "completed",
+            date: "Jul 2024",
+            description: "Advanced tracker installation",
+          },
+          {
+            phase: "Grid Connection",
+            status: "completed",
+            date: "Oct 2024",
+            description: "Grid connection active",
+          },
+          {
+            phase: "Operations",
+            status: "completed",
+            date: "Nov 2024",
+            description: "Tracking operations active",
+          },
         ],
         cuts: [
-          { amount: 500, roi: "8.9%", yearlyReturn: "44.5 USDC" },
-          { amount: 1000, roi: "9.4%", yearlyReturn: "94.0 USDC" },
-          { amount: 2500, roi: "10.1%", yearlyReturn: "252.5 USDC" },
-          { amount: 5000, roi: "11.8%", yearlyReturn: "590.0 USDC" }
-        ]
-      }
+          {
+            amount: 50000,
+            roi: "8.9%",
+            yearlyReturn: "4,450 USDC",
+          },
+          {
+            amount: 100000,
+            roi: "9.4%",
+            yearlyReturn: "9,400 USDC",
+          },
+          {
+            amount: 250000,
+            roi: "10.1%",
+            yearlyReturn: "25,250 USDC",
+          },
+          {
+            amount: 500000,
+            roi: "11.8%",
+            yearlyReturn: "59,000 USDC",
+          },
+        ],
+      },
     ];
 
-    const filteredNFTs = solarNFTs.filter(nft => {
-      const matchesSearch = nft.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        nft.collection.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesFilter = filterBy === "all" ||
+    const filteredNFTs = solarNFTs.filter((nft) => {
+      const matchesSearch =
+        nft.name
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        nft.collection
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase());
+      const matchesFilter =
+        filterBy === "all" ||
         (filterBy === "verified" && nft.verified) ||
-        (filterBy === "auction" && nft.auctionType === "auction") ||
+        (filterBy === "auction" &&
+          nft.auctionType === "auction") ||
         (filterBy === "buyNow" && nft.auctionType === "buyNow");
       return matchesSearch && matchesFilter;
     });
@@ -720,13 +991,17 @@ function AppContent() {
     const getStatusIcon = (status: string) => {
       switch (status) {
         case "completed":
-          return <CheckCircle className="w-4 h-4 text-green-400" />;
+          return (
+            <CheckCircle className="w-4 h-4 text-green-400" />
+          );
         case "in-progress":
           return <Activity className="w-4 h-4 text-blue-400" />;
         case "pending":
           return <Timer className="w-4 h-4 text-yellow-400" />;
         default:
-          return <Clock className="w-4 h-4 text-muted-foreground" />;
+          return (
+            <Clock className="w-4 h-4 text-muted-foreground" />
+          );
       }
     };
 
@@ -742,12 +1017,16 @@ function AppContent() {
 
     const getSelectedCutInfo = () => {
       if (!selectedNFT) return null;
-      return selectedNFT.cuts.find((cut: any) => cut.amount === selectedCut);
+      return selectedNFT.cuts.find(
+        (cut: any) => cut.amount === selectedCut,
+      );
     };
 
     const handlePurchase = () => {
       // Simulate purchase process
-      console.log(`Purchasing ${quantity}x ${selectedCut} USDC NFT cuts of ${selectedNFT.name}`);
+      console.log(
+        `Purchasing ${quantity}x ${selectedCut} USDC NFT cuts of ${selectedNFT.name}`,
+      );
       setShowPurchaseModal(false);
       setSelectedNFT(null);
       setQuantity(1);
@@ -763,7 +1042,9 @@ function AppContent() {
       >
         {/* Header */}
         <div className="space-y-2">
-          <h1 className="text-3xl font-bold gradient-text">NFT Marketplace</h1>
+          <h1 className="text-3xl font-bold gradient-text">
+            NFT Marketplace
+          </h1>
           <p className="text-muted-foreground">
             Trade solar energy NFTs in the secondary market
           </p>
@@ -783,15 +1064,24 @@ function AppContent() {
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2">
               <Filter className="w-4 h-4 text-muted-foreground" />
-              <Select value={filterBy} onValueChange={setFilterBy}>
+              <Select
+                value={filterBy}
+                onValueChange={setFilterBy}
+              >
                 <SelectTrigger className="w-40">
                   <SelectValue placeholder="Filter" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All NFTs</SelectItem>
-                  <SelectItem value="verified">Verified Only</SelectItem>
-                  <SelectItem value="auction">Auctions</SelectItem>
-                  <SelectItem value="buyNow">Buy Now</SelectItem>
+                  <SelectItem value="verified">
+                    Verified Only
+                  </SelectItem>
+                  <SelectItem value="auction">
+                    Auctions
+                  </SelectItem>
+                  <SelectItem value="buyNow">
+                    Buy Now
+                  </SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -800,10 +1090,18 @@ function AppContent() {
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="recent">Recently Listed</SelectItem>
-                <SelectItem value="priceAsc">Price: Low to High</SelectItem>
-                <SelectItem value="priceDesc">Price: High to Low</SelectItem>
-                <SelectItem value="popular">Most Popular</SelectItem>
+                <SelectItem value="recent">
+                  Recently Listed
+                </SelectItem>
+                <SelectItem value="priceAsc">
+                  Price: Low to High
+                </SelectItem>
+                <SelectItem value="priceDesc">
+                  Price: High to Low
+                </SelectItem>
+                <SelectItem value="popular">
+                  Most Popular
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -816,8 +1114,10 @@ function AppContent() {
               <div className="flex items-center space-x-2">
                 <Gem className="w-5 h-5 text-primary" />
                 <div>
-                  <p className="text-sm text-muted-foreground">Total Volume</p>
-                  <p className="font-semibold">2,847 USDC</p>
+                  <p className="text-sm text-muted-foreground">
+                    Total Volume
+                  </p>
+                  <p className="font-semibold">2.85B USDC</p>
                 </div>
               </div>
             </CardContent>
@@ -827,8 +1127,10 @@ function AppContent() {
               <div className="flex items-center space-x-2">
                 <WalletIcon className="w-5 h-5 text-accent" />
                 <div>
-                  <p className="text-sm text-muted-foreground">Floor Price</p>
-                  <p className="font-semibold">1.2 USDC</p>
+                  <p className="text-sm text-muted-foreground">
+                    Floor Price
+                  </p>
+                  <p className="font-semibold">12,500 USDC</p>
                 </div>
               </div>
             </CardContent>
@@ -838,8 +1140,10 @@ function AppContent() {
               <div className="flex items-center space-x-2">
                 <Users className="w-5 h-5 text-blue-400" />
                 <div>
-                  <p className="text-sm text-muted-foreground">Owners</p>
-                  <p className="font-semibold">1,456</p>
+                  <p className="text-sm text-muted-foreground">
+                    Owners
+                  </p>
+                  <p className="font-semibold">14,560</p>
                 </div>
               </div>
             </CardContent>
@@ -849,8 +1153,10 @@ function AppContent() {
               <div className="flex items-center space-x-2">
                 <HistoryIcon className="w-5 h-5 text-orange-400" />
                 <div>
-                  <p className="text-sm text-muted-foreground">24h Sales</p>
-                  <p className="font-semibold">89</p>
+                  <p className="text-sm text-muted-foreground">
+                    24h Sales
+                  </p>
+                  <p className="font-semibold">1,892</p>
                 </div>
               </div>
             </CardContent>
@@ -894,7 +1200,9 @@ function AppContent() {
 
                   {/* Badges */}
                   <div className="absolute top-3 left-3">
-                    <Badge className={getRarityColor(nft.rarity)}>
+                    <Badge
+                      className={getRarityColor(nft.rarity)}
+                    >
                       {nft.rarity}
                     </Badge>
                   </div>
@@ -909,44 +1217,72 @@ function AppContent() {
 
                   {/* Auction Type */}
                   <div className="absolute bottom-3 right-3">
-                    <Badge variant="secondary" className="flex items-center space-x-1">
+                    <Badge
+                      variant="secondary"
+                      className="flex items-center space-x-1"
+                    >
                       {getAuctionTypeIcon(nft.auctionType)}
-                      <span className="capitalize">{nft.auctionType}</span>
+                      <span className="capitalize">
+                        {nft.auctionType}
+                      </span>
                     </Badge>
                   </div>
                 </div>
 
-                <CardContent className="p-4 space-y-3">
+                <CardContent className="p-4 space-y-3 pt-[14px] pr-[14px] pb-[12px] pl-[14px]">
                   {/* NFT Info */}
                   <div>
-                    <h3 className="font-semibold truncate">{nft.name}</h3>
-                    <p className="text-sm text-muted-foreground truncate">{nft.collection}</p>
-                    <p className="text-xs text-muted-foreground">{nft.tokenId}</p>
+                    <h3 className="font-semibold truncate">
+                      {nft.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground truncate">
+                      {nft.collection}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {nft.tokenId}
+                    </p>
                   </div>
 
                   {/* Energy Stats */}
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <div>
-                      <p className="text-muted-foreground">Generation</p>
-                      <p className="font-medium">{nft.powerGeneration}</p>
+                      <p className="text-muted-foreground">
+                        Generation
+                      </p>
+                      <p className="font-medium">
+                        {nft.powerGeneration}
+                      </p>
                     </div>
                     <div>
-                      <p className="text-muted-foreground">Efficiency</p>
-                      <p className="font-medium">{nft.efficiency}</p>
+                      <p className="text-muted-foreground">
+                        Efficiency
+                      </p>
+                      <p className="font-medium">
+                        {nft.efficiency}
+                      </p>
                     </div>
                   </div>
 
                   {/* Price and Change */}
                   <div className="space-y-1">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">Current Price</span>
-                      <span className={`text-xs ${nft.priceChange.startsWith('+') ? 'text-green-400' :
-                        nft.priceChange.startsWith('-') ? 'text-red-400' : 'text-muted-foreground'
-                        }`}>
+                      <span className="text-sm text-muted-foreground">
+                        Current Price
+                      </span>
+                      <span
+                        className={`text-xs ${nft.priceChange.startsWith("+")
+                          ? "text-green-400"
+                          : nft.priceChange.startsWith("-")
+                            ? "text-red-400"
+                            : "text-muted-foreground"
+                          }`}
+                      >
                         {nft.priceChange}
                       </span>
                     </div>
-                    <p className="text-lg font-bold text-primary">{nft.price}</p>
+                    <p className="text-lg font-bold text-primary">
+                      {nft.price}
+                    </p>
                   </div>
 
                   {/* Stats */}
@@ -976,7 +1312,7 @@ function AppContent() {
                       </Button>
                     ) : (
                       <Button
-                        className="flex-1"
+                        className="flex-1 bg-[rgba(66,66,110,0.3)]"
                         variant="outline"
                         onClick={() => handleBuyNow(nft)}
                       >
@@ -999,7 +1335,9 @@ function AppContent() {
             <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
               <Search className="w-8 h-8 text-muted-foreground" />
             </div>
-            <h3 className="text-lg font-semibold mb-2">No NFTs found</h3>
+            <h3 className="text-lg font-semibold mb-2">
+              No NFTs found
+            </h3>
             <p className="text-muted-foreground">
               Try adjusting your search or filter criteria
             </p>
@@ -1007,7 +1345,10 @@ function AppContent() {
         )}
 
         {/* Purchase Modal */}
-        <Dialog open={showPurchaseModal} onOpenChange={setShowPurchaseModal}>
+        <Dialog
+          open={showPurchaseModal}
+          onOpenChange={setShowPurchaseModal}
+        >
           <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="flex items-center justify-between">
@@ -1016,16 +1357,18 @@ function AppContent() {
                     <ShoppingCart className="w-6 h-6" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold">Purchase NFT</h2>
-                    <p className="text-sm text-muted-foreground">{selectedNFT?.name}</p>
+                    <h2 className="text-xl font-bold">
+                      Purchase NFT
+                    </h2>
+                    <p className="text-sm text-muted-foreground">
+                      {selectedNFT?.name}
+                    </p>
                   </div>
                 </div>
-                <Button variant="ghost" onClick={() => setShowPurchaseModal(false)}>
-                  <X className="w-5 h-5" />
-                </Button>
               </DialogTitle>
               <DialogDescription>
-                Choose your investment amount and review the project timeline
+                Choose your investment amount and review the
+                project timeline
               </DialogDescription>
             </DialogHeader>
 
@@ -1043,20 +1386,38 @@ function AppContent() {
                     </div>
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
-                        <p className="text-muted-foreground">Power Generation</p>
-                        <p className="font-semibold">{selectedNFT.powerGeneration}</p>
+                        <p className="text-muted-foreground">
+                          Power Generation
+                        </p>
+                        <p className="font-semibold">
+                          {selectedNFT.powerGeneration}
+                        </p>
                       </div>
                       <div>
-                        <p className="text-muted-foreground">Efficiency</p>
-                        <p className="font-semibold">{selectedNFT.efficiency}</p>
+                        <p className="text-muted-foreground">
+                          Efficiency
+                        </p>
+                        <p className="font-semibold">
+                          {selectedNFT.efficiency}
+                        </p>
                       </div>
                       <div>
-                        <p className="text-muted-foreground">Carbon Offset</p>
-                        <p className="font-semibold">{selectedNFT.carbonOffset}</p>
+                        <p className="text-muted-foreground">
+                          Carbon Offset
+                        </p>
+                        <p className="font-semibold">
+                          {selectedNFT.carbonOffset}
+                        </p>
                       </div>
                       <div>
-                        <p className="text-muted-foreground">Rarity</p>
-                        <Badge className={getRarityColor(selectedNFT.rarity)}>
+                        <p className="text-muted-foreground">
+                          Rarity
+                        </p>
+                        <Badge
+                          className={getRarityColor(
+                            selectedNFT.rarity,
+                          )}
+                        >
                           {selectedNFT.rarity}
                         </Badge>
                       </div>
@@ -1074,15 +1435,26 @@ function AppContent() {
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <div>
-                          <label className="text-sm font-medium">Choose Investment Cut</label>
-                          <Select value={selectedCut.toString()} onValueChange={(value: any) => setSelectedCut(parseInt(value))}>
+                          <label className="text-sm font-medium">
+                            Choose Investment Cut
+                          </label>
+                          <Select
+                            value={selectedCut.toString()}
+                            onValueChange={(value) =>
+                              setSelectedCut(parseInt(value))
+                            }
+                          >
                             <SelectTrigger className="w-full">
                               <SelectValue />
                             </SelectTrigger>
                             <SelectContent>
                               {selectedNFT.cuts.map((cut: any) => (
-                                <SelectItem key={cut.amount} value={cut.amount.toString()}>
-                                  {cut.amount} USDC - ROI: {cut.roi}
+                                <SelectItem
+                                  key={cut.amount}
+                                  value={cut.amount.toString()}
+                                >
+                                  {cut.amount} USDC - ROI:{" "}
+                                  {cut.roi}
                                 </SelectItem>
                               ))}
                             </SelectContent>
@@ -1090,26 +1462,42 @@ function AppContent() {
                         </div>
 
                         <div>
-                          <label className="text-sm font-medium">Quantity</label>
+                          <label className="text-sm font-medium">
+                            Quantity
+                          </label>
                           <div className="flex items-center space-x-2 mt-1">
                             <Button
                               variant="outline"
                               size="sm"
-                              onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                              onClick={() =>
+                                setQuantity(
+                                  Math.max(1, quantity - 1),
+                                )
+                              }
                             >
                               <Minus className="w-4 h-4" />
                             </Button>
                             <Input
                               type="number"
                               value={quantity}
-                              onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+                              onChange={(e) =>
+                                setQuantity(
+                                  Math.max(
+                                    1,
+                                    parseInt(e.target.value) ||
+                                    1,
+                                  ),
+                                )
+                              }
                               className="text-center w-20"
                               min="1"
                             />
                             <Button
                               variant="outline"
                               size="sm"
-                              onClick={() => setQuantity(quantity + 1)}
+                              onClick={() =>
+                                setQuantity(quantity + 1)
+                              }
                             >
                               <Plus className="w-4 h-4" />
                             </Button>
@@ -1123,24 +1511,48 @@ function AppContent() {
                               <div className="space-y-2">
                                 <div className="grid grid-cols-2 gap-4 text-sm">
                                   <div>
-                                    <p className="text-muted-foreground">Annual ROI</p>
-                                    <p className="font-bold text-accent">{getSelectedCutInfo().roi}</p>
+                                    <p className="text-muted-foreground">
+                                      Annual ROI
+                                    </p>
+                                    <p className="font-bold text-accent">
+                                      {getSelectedCutInfo().roi}
+                                    </p>
                                   </div>
                                   <div>
-                                    <p className="text-muted-foreground">Yearly Return</p>
-                                    <p className="font-bold text-green-400">{getSelectedCutInfo().yearlyReturn}</p>
+                                    <p className="text-muted-foreground">
+                                      Yearly Return
+                                    </p>
+                                    <p className="font-bold text-green-400">
+                                      {
+                                        getSelectedCutInfo()
+                                          .yearlyReturn
+                                      }
+                                    </p>
                                   </div>
                                 </div>
                                 <Separator />
                                 <div className="grid grid-cols-2 gap-4 text-sm">
                                   <div>
-                                    <p className="text-muted-foreground">Total Investment</p>
-                                    <p className="font-bold text-primary">{calculateTotalCost()} USDC</p>
+                                    <p className="text-muted-foreground">
+                                      Total Investment
+                                    </p>
+                                    <p className="font-bold text-primary">
+                                      {calculateTotalCost()}{" "}
+                                      USDC
+                                    </p>
                                   </div>
                                   <div>
-                                    <p className="text-muted-foreground">Expected Annual Return</p>
+                                    <p className="text-muted-foreground">
+                                      Expected Annual Return
+                                    </p>
                                     <p className="font-bold text-accent">
-                                      {(parseFloat(getSelectedCutInfo().yearlyReturn) * quantity).toFixed(1)} USDC
+                                      {(
+                                        parseFloat(
+                                          getSelectedCutInfo()
+                                            .yearlyReturn,
+                                        ) * quantity
+                                      ).toFixed(1)}{" "}
+                                      USDC
                                     </p>
                                   </div>
                                 </div>
@@ -1163,36 +1575,54 @@ function AppContent() {
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      {selectedNFT.timeline.map((phase: any, index: any) => (
-                        <div key={index} className="flex items-start space-x-4">
-                          <div className="flex items-center justify-center w-8 h-8 rounded-full bg-secondary flex-shrink-0">
-                            {getStatusIcon(phase.status)}
-                          </div>
-                          <div className="flex-1">
-                            <div className="flex items-center justify-between">
-                              <h4 className="font-semibold">{phase.phase}</h4>
-                              <Badge
-                                variant="secondary"
-                                className={
-                                  phase.status === "completed"
-                                    ? "bg-green-500/20 text-green-400"
-                                    : phase.status === "in-progress"
-                                      ? "bg-blue-500/20 text-blue-400"
-                                      : "bg-yellow-500/20 text-yellow-400"
-                                }
-                              >
-                                {phase.status === "completed" ? "Completed" :
-                                  phase.status === "in-progress" ? "In Progress" : "Pending"}
-                              </Badge>
+                      {selectedNFT.timeline.map(
+                        (phase: any, index: any) => (
+                          <div
+                            key={index}
+                            className="flex items-start space-x-4"
+                          >
+                            <div className="flex items-center justify-center w-8 h-8 rounded-full bg-secondary flex-shrink-0">
+                              {getStatusIcon(phase.status)}
                             </div>
-                            <p className="text-sm text-muted-foreground mt-1">{phase.date}</p>
-                            <p className="text-sm">{phase.description}</p>
+                            <div className="flex-1">
+                              <div className="flex items-center justify-between">
+                                <h4 className="font-semibold">
+                                  {phase.phase}
+                                </h4>
+                                <Badge
+                                  variant="secondary"
+                                  className={
+                                    phase.status === "completed"
+                                      ? "bg-green-500/20 text-green-400"
+                                      : phase.status ===
+                                        "in-progress"
+                                        ? "bg-blue-500/20 text-blue-400"
+                                        : "bg-yellow-500/20 text-yellow-400"
+                                  }
+                                >
+                                  {phase.status === "completed"
+                                    ? "Completed"
+                                    : phase.status ===
+                                      "in-progress"
+                                      ? "In Progress"
+                                      : "Pending"}
+                                </Badge>
+                              </div>
+                              <p className="text-sm text-muted-foreground mt-1">
+                                {phase.date}
+                              </p>
+                              <p className="text-sm">
+                                {phase.description}
+                              </p>
+                            </div>
+                            {index <
+                              selectedNFT.timeline.length -
+                              1 && (
+                                <div className="absolute left-[19px] mt-8 w-px h-8 bg-border"></div>
+                              )}
                           </div>
-                          {index < selectedNFT.timeline.length - 1 && (
-                            <div className="absolute left-[19px] mt-8 w-px h-8 bg-border"></div>
-                          )}
-                        </div>
-                      ))}
+                        ),
+                      )}
                     </div>
                   </CardContent>
                 </Card>
@@ -1247,7 +1677,7 @@ function AppContent() {
       />
 
       <main className="pt-20 pb-8">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 mx-[183px] my-[0px] px-[14px] py-[33px]">
           <motion.div
             key={activeSection}
             initial={{ opacity: 0, y: 20 }}
@@ -1259,15 +1689,19 @@ function AppContent() {
         </div>
       </main>
 
-      {/* Floating Menu - Mobile Priority */}
-      <FloatingMenu
-        activeSection={activeSection}
-        setActiveSection={setActiveSection}
-      />
+      {/* Floating Menu - Mobile Only (hidden on desktop ≥768px) */}
+      {isMobile && (
+        <FloatingMenu
+          activeSection={activeSection}
+          setActiveSection={setActiveSection}
+        />
+      )}
 
       {/* Project Onboarding Modal */}
       {showOnboarding && (
-        <ProjectOnboarding onClose={() => setShowOnboarding(false)} />
+        <ProjectOnboarding
+          onClose={() => setShowOnboarding(false)}
+        />
       )}
 
       {/* Background Effects - Hidden on Mobile */}

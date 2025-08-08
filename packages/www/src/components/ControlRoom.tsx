@@ -7,12 +7,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel";
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
-import { 
-  Zap, 
-  Sun, 
-  Cloud, 
-  Thermometer, 
-  Wind, 
+import {
+  Zap,
+  Sun,
+  Cloud,
+  Thermometer,
+  Wind,
   AlertTriangle,
   CheckCircle,
   Activity,
@@ -31,17 +31,17 @@ import { LineChart as RechartsLineChart, Line, XAxis, YAxis, CartesianGrid, Tool
 export default function ControlRoom() {
   const [energyTimeframe, setEnergyTimeframe] = useState("today");
   const [liveData, setLiveData] = useState({
-    totalProduction: 6.1,
+    totalProduction: 61.5,
     efficiency: 79,
     activeFarms: 2,
     issues: 2
   });
 
   const [liveProduction, setLiveProduction] = useState({
-    totalPower: 7.5,
-    dailyProduction: 42.3,
+    totalPower: 76.8,
+    dailyProduction: 4230,
     efficiency: 85,
-    currentOutput: 6.2
+    currentOutput: 62.4
   });
 
   const [energyData, setEnergyData] = useState([
@@ -74,13 +74,13 @@ export default function ControlRoom() {
         totalProduction: prev.totalProduction + (Math.random() - 0.5) * 0.5,
         efficiency: Math.max(75, Math.min(85, prev.efficiency + (Math.random() - 0.5) * 2))
       }));
-      
+
       setLiveProduction(prev => ({
         ...prev,
         currentOutput: Math.max(0, prev.currentOutput + (Math.random() - 0.5) * 0.5),
         efficiency: Math.max(80, Math.min(90, prev.efficiency + (Math.random() - 0.5) * 1))
       }));
-      
+
       setEnergyData(prev => prev.map(item => ({
         ...item,
         production: Math.max(0, item.production + (Math.random() - 0.5) * 0.3)
@@ -95,12 +95,12 @@ export default function ControlRoom() {
       id: 1,
       name: "Solar Farm Alpha",
       location: "Nevada, USA",
-      capacity: "2.5 MW",
-      production: `${liveData.totalProduction.toFixed(1)} MW`,
+      capacity: "25.8 MW",
+      production: `${(liveData.totalProduction * 4.2).toFixed(1)} MW`,
       efficiency: 84,
       status: "active",
       issues: 0,
-      dailyRewards: "2.5 USDC",
+      dailyRewards: "25,500 USDC",
       weather: {
         temperature: 32,
         humidity: 42,
@@ -113,12 +113,12 @@ export default function ControlRoom() {
       id: 2,
       name: "Green Valley",
       location: "California, USA",
-      capacity: "3.2 MW",
-      production: "2.8 MW",
+      capacity: "32.5 MW",
+      production: "28.4 MW",
       efficiency: 87,
       status: "active",
       issues: 0,
-      dailyRewards: "3.1 USDC",
+      dailyRewards: "31,200 USDC",
       weather: {
         temperature: 28,
         humidity: 38,
@@ -131,12 +131,12 @@ export default function ControlRoom() {
       id: 3,
       name: "Desert Sun",
       location: "Arizona, USA",
-      capacity: "1.8 MW",
-      production: "1.2 MW",
+      capacity: "18.7 MW",
+      production: "12.6 MW",
       efficiency: 67,
       status: "maintenance",
       issues: 2,
-      dailyRewards: "1.8 USDC",
+      dailyRewards: "18,400 USDC",
       weather: {
         temperature: 35,
         humidity: 25,
@@ -164,7 +164,7 @@ export default function ControlRoom() {
 
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
@@ -191,31 +191,31 @@ export default function ControlRoom() {
                 <Sun className="w-4 h-4 mr-2 text-yellow-400" />
                 <span className="text-sm">Total Power</span>
               </div>
-              <p className="text-xl font-bold">{liveProduction.totalPower} kW</p>
+              <p className="text-xl font-bold">{liveProduction.totalPower} MW</p>
             </div>
-            
+
             <div className="p-3 rounded-lg bg-secondary/30">
               <div className="flex items-center mb-2">
                 <Zap className="w-4 h-4 mr-2 text-blue-400" />
                 <span className="text-sm">Current Output</span>
               </div>
-              <motion.p 
+              <motion.p
                 className="text-xl font-bold text-primary"
                 key={liveProduction.currentOutput}
                 initial={{ scale: 1.1 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.3 }}
               >
-                {liveProduction.currentOutput.toFixed(1)} kW
+                {liveProduction.currentOutput.toFixed(1)} MW
               </motion.p>
             </div>
-            
+
             <div className="p-3 rounded-lg bg-secondary/30">
               <div className="flex items-center mb-2">
                 <TrendingUp className="w-4 h-4 mr-2 text-green-400" />
                 <span className="text-sm">Efficiency</span>
               </div>
-              <motion.p 
+              <motion.p
                 className="text-xl font-bold text-accent"
                 key={liveProduction.efficiency}
                 initial={{ scale: 1.1 }}
@@ -225,92 +225,17 @@ export default function ControlRoom() {
                 {liveProduction.efficiency.toFixed(2)}%
               </motion.p>
             </div>
-            
+
             <div className="p-3 rounded-lg bg-secondary/30">
               <div className="flex items-center mb-2">
                 <DollarSign className="w-4 h-4 mr-2 text-green-400" />
                 <span className="text-sm">Daily Production</span>
               </div>
-              <p className="text-xl font-bold">{liveProduction.dailyProduction} kWh</p>
+              <p className="text-xl font-bold">{liveProduction.dailyProduction.toLocaleString()} MWh</p>
             </div>
           </div>
         </CardContent>
       </Card>
-
-      {/* Header Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Card className="card-glow">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Total Production</p>
-                <motion.p 
-                  className="text-2xl font-bold gradient-text"
-                  key={liveData.totalProduction}
-                  initial={{ scale: 1.1 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {liveData.totalProduction.toFixed(1)} MW
-                </motion.p>
-              </div>
-              <div className="relative">
-                <Zap className="w-8 h-8 text-primary" />
-                <motion.div
-                  className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full"
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        
-        <Card className="card-glow">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Avg Efficiency</p>
-                <motion.p 
-                  className="text-2xl font-bold text-accent"
-                  key={liveData.efficiency}
-                  initial={{ scale: 1.1 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {liveData.efficiency.toFixed(0)}%
-                </motion.p>
-              </div>
-              <Activity className="w-8 h-8 text-accent" />
-            </div>
-          </CardContent>
-        </Card>
-        
-        <Card className="card-glow">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Active Farms</p>
-                <p className="text-2xl font-bold">{liveData.activeFarms}/3</p>
-              </div>
-              <CheckCircle className="w-8 h-8 text-green-500" />
-            </div>
-          </CardContent>
-        </Card>
-        
-        <Card className="card-glow">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Issues</p>
-                <p className="text-2xl font-bold text-destructive">{liveData.issues}</p>
-              </div>
-              <AlertTriangle className="w-8 h-8 text-destructive" />
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
 
 
       {/* Live Charts */}
@@ -342,25 +267,25 @@ export default function ControlRoom() {
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
                 <XAxis dataKey="time" stroke="#a0a0b0" />
                 <YAxis stroke="#a0a0b0" />
-                <Tooltip 
-                  contentStyle={{ 
-                    backgroundColor: '#151520', 
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: '#151520',
                     border: '1px solid rgba(0,212,255,0.2)',
-                    borderRadius: '8px'
+                    borderRadius: '8px',
                   }}
                 />
-                <Line 
-                  type="monotone" 
-                  dataKey="production" 
-                  stroke="#00d4ff" 
+                <Line
+                  type="monotone"
+                  dataKey="production"
+                  stroke="#00d4ff"
                   strokeWidth={3}
                   dot={{ fill: '#00d4ff', strokeWidth: 2, r: 5 }}
                   activeDot={{ r: 8, stroke: '#00d4ff', strokeWidth: 3 }}
                 />
-                <Line 
-                  type="monotone" 
-                  dataKey="consumption" 
-                  stroke="#00ff88" 
+                <Line
+                  type="monotone"
+                  dataKey="consumption"
+                  stroke="#00ff88"
                   strokeWidth={3}
                   dot={{ fill: '#00ff88', strokeWidth: 2, r: 5 }}
                   activeDot={{ r: 8, stroke: '#00ff88', strokeWidth: 3 }}
@@ -372,7 +297,7 @@ export default function ControlRoom() {
       </Card>
 
       {/* Solar Fields Status Carousel - Full Width */}
-      <Card className="card-glow">
+      <Card className="card-glow mt-[0px] mr-[0px] mb-[21px] ml-[0px]">
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
             <div className="flex items-center">
@@ -404,23 +329,21 @@ export default function ControlRoom() {
                   >
                     {/* Background Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-60"></div>
-                    
+
                     {/* Status Indicator Strip */}
-                    <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${
-                      field.status === "active" ? "from-green-400 to-emerald-500" :
+                    <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${field.status === "active" ? "from-green-400 to-emerald-500" :
                       field.status === "maintenance" ? "from-yellow-400 to-orange-500" :
-                      "from-gray-400 to-gray-500"
-                    }`}></div>
-                    
-                    <div className="relative z-10 p-5 h-full flex flex-col">
+                        "from-gray-400 to-gray-500"
+                      }`}></div>
+
+                    <div className="relative z-10 h-full flex flex-col p-[17px] my-[0px] m-[0px]">
                       {/* Header with Enhanced Badges */}
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center space-x-3">
-                          <div className={`w-3 h-3 rounded-full animate-pulse ${
-                            field.status === "active" ? "bg-green-400 shadow-lg shadow-green-400/50" :
+                          <div className={`w-3 h-3 rounded-full animate-pulse ${field.status === "active" ? "bg-green-400 shadow-lg shadow-green-400/50" :
                             field.status === "maintenance" ? "bg-yellow-400 shadow-lg shadow-yellow-400/50" :
-                            "bg-gray-400 shadow-lg shadow-gray-400/50"
-                          }`}></div>
+                              "bg-gray-400 shadow-lg shadow-gray-400/50"
+                            }`}></div>
                           <div>
                             <h4 className="font-bold text-lg text-foreground">{field.name}</h4>
                             <p className="text-sm text-muted-foreground flex items-center mt-1">
@@ -430,15 +353,14 @@ export default function ControlRoom() {
                           </div>
                         </div>
                         <div className="flex flex-col items-end space-y-2">
-                          <Badge 
+                          <Badge
                             variant="secondary"
-                            className={`${
-                              field.status === "active" 
-                                ? "bg-green-500/20 text-green-400 border-green-400/30 shadow-lg shadow-green-400/20" 
-                                : field.status === "maintenance"
+                            className={`${field.status === "active"
+                              ? "bg-green-500/20 text-green-400 border-green-400/30 shadow-lg shadow-green-400/20"
+                              : field.status === "maintenance"
                                 ? "bg-yellow-500/20 text-yellow-400 border-yellow-400/30 shadow-lg shadow-yellow-400/20"
                                 : "bg-gray-500/20 text-gray-400 border-gray-400/30"
-                            } font-semibold px-3 py-1 animate-pulse`}
+                              } font-semibold px-3 py-1 animate-pulse`}
                           >
                             {field.status === "active" && <CheckCircle className="w-3 h-3 mr-1" />}
                             {field.status === "maintenance" && <AlertTriangle className="w-3 h-3 mr-1" />}
@@ -450,7 +372,7 @@ export default function ControlRoom() {
                           </Badge>
                         </div>
                       </div>
-                      
+
                       {/* Enhanced Production Stats */}
                       <div className="grid grid-cols-2 gap-4 mb-4">
                         <div className="p-3 rounded-lg bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 hover:border-primary/40 transition-colors">
@@ -501,7 +423,7 @@ export default function ControlRoom() {
                           </div>
                         </div>
                       </div>
-                      
+
                       {/* Enhanced Progress Bar */}
                       <div className="mb-4">
                         <div className="flex items-center justify-between mb-2">
@@ -513,7 +435,7 @@ export default function ControlRoom() {
                           <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full"></div>
                         </div>
                       </div>
-                      
+
                       {/* Enhanced Footer */}
                       <div className="flex justify-between items-center pt-3 border-t border-border/50 mt-auto">
                         <div className="flex items-center space-x-2">
@@ -533,17 +455,17 @@ export default function ControlRoom() {
                             </>
                           )}
                         </div>
-                        <Button 
-                          size="sm" 
+                        <Button
+                          size="sm"
                           variant="outline"
-                          className="bg-primary/10 border-primary/30 hover:bg-primary/20 hover:border-primary/50 text-primary hover:text-primary transition-all duration-300"
+                          className="bg-primary/10 border-primary/30 hover:bg-primary/20 hover:border-primary/50 text-[rgba(255,255,255,1)] hover:text-primary transition-all duration-300"
                         >
                           <Settings className="w-4 h-4 mr-2" />
                           Manage
                         </Button>
                       </div>
                     </div>
-                    
+
                     {/* Hover Glow Effect */}
                     <div className="absolute inset-0 rounded-xl opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
                   </motion.div>
@@ -571,23 +493,25 @@ export default function ControlRoom() {
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
                 <XAxis dataKey="day" stroke="#a0a0b0" />
                 <YAxis stroke="#a0a0b0" />
-                <Tooltip 
-                  contentStyle={{ 
-                    backgroundColor: '#151520', 
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: '#151520',
                     border: '1px solid rgba(0,212,255,0.2)',
                     borderRadius: '8px'
                   }}
+                  cursor={false}
+
                 />
-                <Bar 
-                  dataKey="production" 
+                <Bar
+                  dataKey="production"
                   fill="url(#productionGradient)"
                   radius={[4, 4, 0, 0]}
                   className="transition-all duration-300 hover:opacity-80 cursor-pointer"
                 />
                 <defs>
                   <linearGradient id="productionGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#00d4ff" stopOpacity={0.8}/>
-                    <stop offset="95%" stopColor="#00ff88" stopOpacity={0.6}/>
+                    <stop offset="5%" stopColor="#00d4ff" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#00ff88" stopOpacity={0.6} />
                   </linearGradient>
                 </defs>
               </BarChart>
@@ -629,7 +553,7 @@ export default function ControlRoom() {
                 </Badge>
               </TabsTrigger>
             </TabsList>
-            
+
             <TabsContent value="active" className="mt-4">
               <div className="space-y-3">
                 {activeAlerts.map((alert, index) => (
@@ -638,11 +562,10 @@ export default function ControlRoom() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className={`p-3 rounded-lg border-l-4 ${
-                      alert.type === "error" ? "border-destructive bg-destructive/10" :
+                    className={`p-3 rounded-lg border-l-4 ${alert.type === "error" ? "border-destructive bg-destructive/10" :
                       alert.type === "warning" ? "border-yellow-500 bg-yellow-500/10" :
-                      "border-blue-500 bg-blue-500/10"
-                    }`}
+                        "border-blue-500 bg-blue-500/10"
+                      }`}
                   >
                     <div className="flex items-center justify-between">
                       <p className="font-medium">{alert.message}</p>
@@ -659,7 +582,7 @@ export default function ControlRoom() {
                 )}
               </div>
             </TabsContent>
-            
+
             <TabsContent value="solved" className="mt-4">
               <div className="space-y-3">
                 {solvedAlerts.map((alert, index) => (

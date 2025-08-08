@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
@@ -26,57 +27,60 @@ export default function Wallet() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [isTokenomicsOpen, setIsTokenomicsOpen] = useState(false);
   const [claimableRewards, setClaimableRewards] = useState([
-    { nftId: 1, amount: "1.2 USDC", type: "Daily", timestamp: "Ready", farmName: "Solar Farm Alpha" },
-    { nftId: 2, amount: "0.8 USDC", type: "Weekly", timestamp: "2h ago", farmName: "Green Valley" },
-    { nftId: 3, amount: "2.1 USDC", type: "Monthly", timestamp: "Ready", farmName: "Desert Sun" }
+    { nftId: 1, amount: "12,500 USDC", type: "Daily", timestamp: "Ready", farmName: "Solar Farm Alpha" },
+    { nftId: 2, amount: "8,750 USDC", type: "Weekly", timestamp: "2h ago", farmName: "Green Valley" },
+    { nftId: 3, amount: "21,800 USDC", type: "Monthly", timestamp: "Ready", farmName: "Desert Sun" }
   ]);
 
 
 
   const walletData = {
     address: "erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s8nr3zpz3hypefsdd8ssycr6th",
-    balance: "45.23 USDC",
-    usdValue: "$45.23",
+    balance: "845,320 USDC",
+    usdValue: "$845,320",
     nfts: [
       {
         id: 1,
         name: "Solar Panel #1247",
         collection: "SolarShare Genesis",
-        power: "2.5 kW",
+        power: "25.8 MW",
         roi: "+12.5%",
-        dailyRewards: "1.2 USDC",
+        dailyRewards: "12,500 USDC",
         status: "active",
         efficiency: 87,
-        claimable: true
+        claimable: true,
+        image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&h=400&fit=crop&crop=center"
       },
       {
         id: 2,
         name: "Green Energy #892",
         collection: "EcoFarm Collection",
-        power: "1.8 kW",
+        power: "18.2 MW",
         roi: "+8.3%",
-        dailyRewards: "0.8 USDC",
+        dailyRewards: "8,750 USDC",
         status: "active",
         efficiency: 82,
-        claimable: true
+        claimable: true,
+        image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=400&h=400&fit=crop&crop=center"
       },
       {
         id: 3,
         name: "Desert Sun #456",
         collection: "Solar Farms",
-        power: "3.2 kW",
+        power: "32.5 MW",
         roi: "+15.2%",
-        dailyRewards: "2.1 USDC",
+        dailyRewards: "21,800 USDC",
         status: "maintenance",
         efficiency: 65,
-        claimable: false
+        claimable: false,
+        image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=400&h=400&fit=crop&crop=center"
       }
     ],
     recentTransactions: [
-      { type: "Received", amount: "2.5 USDC", from: "Staking Rewards", time: "2h ago", status: "confirmed" },
-      { type: "Sent", amount: "1.2 USDC", to: "Solar Farm Investment", time: "5h ago", status: "confirmed" },
-      { type: "NFT Mint", amount: "0.8 USDC", from: "SolarShare Genesis", time: "1d ago", status: "confirmed" },
-      { type: "Reward", amount: "0.5 USDC", from: "Energy Production", time: "2d ago", status: "confirmed" }
+      { type: "Received", amount: "25,480 USDC", from: "Staking Rewards", time: "2h ago", status: "confirmed" },
+      { type: "Sent", amount: "12,500 USDC", to: "Solar Farm Investment", time: "5h ago", status: "confirmed" },
+      { type: "Reward", amount: "18,750 USDC", from: "Energy Production", time: "1d ago", status: "confirmed" },
+      { type: "Reward", amount: "5,200 USDC", from: "Energy Production", time: "2d ago", status: "confirmed" }
     ]
   };
 
@@ -141,10 +145,6 @@ export default function Wallet() {
                 <Button variant="outline" className="flex-1">
                   <Download className="w-4 h-4 mr-2" />
                   Receive
-                </Button>
-                <Button variant="outline" className="flex-1">
-                  <Gift className="w-4 h-4 mr-2" />
-                  Claim
                 </Button>
               </div>
             </div>
@@ -287,24 +287,36 @@ export default function Wallet() {
                   >
 
                     {/* NFT Image Container */}
-                    <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl mb-4 flex items-center justify-center relative">
-                      <div className="text-center">
-                        <div className="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center mb-3 mx-auto shadow-lg">
-                          <Sun className="w-10 h-10 text-white" />
-                        </div>
-                        <p className="text-sm text-muted-foreground font-medium">Solar NFT</p>
-                      </div>
+                    <div className="aspect-square rounded-xl mb-4 overflow-hidden relative group/nft">
+                      <ImageWithFallback
+                        src={nft.image}
+                        alt={nft.name}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover/nft:scale-110"
+                      />
+
+                      {/* Overlay gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 opacity-0 group-hover/nft:opacity-100 transition-opacity duration-300"></div>
 
                       {/* Status Indicator */}
                       {nft.status === "active" && (
                         <div className="absolute top-3 right-3">
                           <motion.div
-                            className="w-3 h-3 bg-green-500 rounded-full"
+                            className="w-3 h-3 bg-green-500 rounded-full shadow-lg shadow-green-500/50"
                             animate={{ scale: [1, 1.2, 1] }}
                             transition={{ duration: 2, repeat: Infinity }}
                           />
                         </div>
                       )}
+
+                      {/* Type badge */}
+                      <div className="absolute bottom-3 left-3">
+                        <div className="bg-black/70 backdrop-blur-sm px-2 py-1 rounded-full">
+                          <p className="text-xs text-white font-medium flex items-center">
+                            <Sun className="w-3 h-3 mr-1" />
+                            Solar NFT
+                          </p>
+                        </div>
+                      </div>
                     </div>
 
                     {/* NFT Information */}
@@ -334,24 +346,15 @@ export default function Wallet() {
                         </div>
                       </div>
 
-                      {/* Action Buttons */}
-                      <div className="flex space-x-2 mt-3">
+                      {/* Action Button */}
+                      <div className="mt-3">
                         <Button
                           size="sm"
                           variant="outline"
-                          className="flex-1"
+                          className="w-full text-[12px] bg-[rgba(66,66,110,0.3)]"
                           onClick={() => handleManageNFT(nft)}
                         >
                           Manage
-                        </Button>
-                        <Button
-                          size="sm"
-                          className={`flex-1 ${nft.claimable ? 'bg-gradient-to-r from-primary to-accent hover:from-primary/80 hover:to-accent/80' : 'bg-gray-500'}`}
-                          disabled={!nft.claimable}
-                          onClick={() => nft.claimable && handleClaimNFTReward(nft.id)}
-                        >
-                          <Gift className="w-4 h-4 mr-1" />
-                          {nft.claimable ? 'Claim' : 'Claimed'}
                         </Button>
                       </div>
                     </div>
@@ -361,14 +364,7 @@ export default function Wallet() {
             </div>
 
             {/* Scroll Indicators */}
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2 pb-2">
-              {Array.from({ length: Math.ceil(walletData.nfts.length / 3) }).map((_, i) => (
-                <div
-                  key={i}
-                  className="w-2 h-2 rounded-full bg-white/30 backdrop-blur-sm"
-                />
-              ))}
-            </div>
+
           </div>
         </CardContent>
       </Card>
@@ -433,7 +429,7 @@ export default function Wallet() {
 
           {/* View All Transactions Button */}
           <div className="mt-4 text-center">
-            <Button variant="outline" className="w-full">
+            <Button variant="outline" className="w-full bg-[rgba(86,86,140,0.3)]">
               <Activity className="w-4 h-4 mr-2" />
               View All Transactions
             </Button>

@@ -509,8 +509,8 @@ export default function SPVTokenomics({ isOpen, onClose, selectedProject }: SPVT
                       <div className="flex items-start justify-between">
                         <div className="flex items-start space-x-3">
                           <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${proposal.type === 'technical' ? 'bg-blue-500/20' :
-                              proposal.type === 'financial' ? 'bg-green-500/20' :
-                                'bg-purple-500/20'
+                            proposal.type === 'financial' ? 'bg-green-500/20' :
+                              'bg-purple-500/20'
                             }`}>
                             {getProposalIcon(proposal.type)}
                           </div>
@@ -610,7 +610,7 @@ export default function SPVTokenomics({ isOpen, onClose, selectedProject }: SPVT
                     </div>
                     <div>
                       <span className="text-muted-foreground">P.IVA</span>
-                      <p className="font-semibold">IT12345678901</p>
+                      <p className="font-semibold truncate">IT12345678901</p>
                     </div>
                     <div>
                       <span className="text-muted-foreground">Sede Legale</span>
@@ -764,8 +764,8 @@ export default function SPVTokenomics({ isOpen, onClose, selectedProject }: SPVT
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${selectedNFT?.id === nft.id
-                          ? 'border-primary bg-primary/10'
-                          : 'border-border hover:border-primary/50'
+                        ? 'border-primary bg-primary/10'
+                        : 'border-border hover:border-primary/50'
                         }`}
                       onClick={() => setSelectedNFT(nft)}
                     >
@@ -1211,10 +1211,10 @@ export default function SPVTokenomics({ isOpen, onClose, selectedProject }: SPVT
                     {/* Badges */}
                     <div className="absolute top-3 left-3">
                       <Badge className={`${listingForm.rarity === "common" ? "bg-gray-500/20 text-gray-400" :
-                          listingForm.rarity === "rare" ? "bg-blue-500/20 text-blue-400" :
-                            listingForm.rarity === "epic" ? "bg-purple-500/20 text-purple-400" :
-                              listingForm.rarity === "legendary" ? "bg-orange-500/20 text-orange-400" :
-                                "bg-pink-500/20 text-pink-400"
+                        listingForm.rarity === "rare" ? "bg-blue-500/20 text-blue-400" :
+                          listingForm.rarity === "epic" ? "bg-purple-500/20 text-purple-400" :
+                            listingForm.rarity === "legendary" ? "bg-orange-500/20 text-orange-400" :
+                              "bg-pink-500/20 text-pink-400"
                         }`}>
                         {listingForm.rarity.charAt(0).toUpperCase() + listingForm.rarity.slice(1)}
                       </Badge>

@@ -11,14 +11,14 @@ import { Progress } from "./ui/progress";
 import { Separator } from "./ui/separator";
 import { Switch } from "./ui/switch";
 import { Checkbox } from "./ui/checkbox";
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  Upload, 
-  FileText, 
-  CheckCircle, 
-  XCircle, 
-  Clock, 
+import {
+  ChevronLeft,
+  ChevronRight,
+  Upload,
+  FileText,
+  CheckCircle,
+  XCircle,
+  Clock,
   AlertCircle,
   Sun,
   MapPin,
@@ -64,7 +64,7 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
 
   const [verificationStatus, setVerificationStatus] = useState({
     esiti: "pending",
-    om: "pending", 
+    om: "pending",
     tennet: "pending",
     mise: "pending"
   });
@@ -80,13 +80,13 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
   const progress = (currentStep / totalSteps) * 100;
 
   const steps = [
-    { id: 1, title: "Benvenuto", icon: Sun, description: "Inizia il processo di candidatura" },
-    { id: 2, title: "Dati Impianto", icon: Settings, description: "Inserisci informazioni tecniche" },
-    { id: 3, title: "Verifica Documentale", icon: FileCheck, description: "Controllo documenti" },
-    { id: 4, title: "SPV & Identità", icon: Building, description: "Configurazione SPV" },
-    { id: 5, title: "Onboarding Nexcomply", icon: Shield, description: "Due diligence e KYC" },
-    { id: 6, title: "Raccolta Fondi", icon: TrendingUp, description: "Lancio su piattaforma" },
-    { id: 7, title: "Validazione", icon: Award, description: "Completamento processo" }
+    { id: 1, title: "Welcome", icon: Sun, description: "Inizia il processo di candidatura" },
+    { id: 2, title: "Plant Data", icon: Settings, description: "Inserisci informazioni tecniche" },
+    { id: 3, title: "Document Verification", icon: FileCheck, description: "Controllo documenti" },
+    { id: 4, title: "SPV & Identity", icon: Building, description: "Configurazione SPV" },
+    { id: 5, title: "Nexcomply Onboarding", icon: Shield, description: "Due diligence e KYC" },
+    { id: 6, title: "Fundraising", icon: TrendingUp, description: "Lancio su piattaforma" },
+    { id: 7, title: "Validation", icon: Award, description: "Completamento processo" }
   ];
 
   const getStatusColor = (status: string) => {
@@ -140,27 +140,27 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
               <Sun className="w-12 h-12" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold mb-2">Candidatura Impianto Solare</h2>
+              <h2 className="text-2xl font-bold mb-2">Solar Plant Application</h2>
               <p className="text-muted-foreground">
-                Inizia il processo per candidare il tuo impianto a SolarShare
+                Start the process to apply your plant to SolarShare
               </p>
             </div>
             <div className="space-y-3 text-left max-w-md mx-auto">
               <div className="flex items-center space-x-3">
                 <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>Verifica documentale automatizzata</span>
+                <span>Automated document verification</span>
               </div>
               <div className="flex items-center space-x-3">
                 <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>Integrazione Nexcomply per KYC</span>
+                <span>Nexcomply integration for KYC</span>
               </div>
               <div className="flex items-center space-x-3">
                 <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>Tokenizzazione NFT automatica</span>
+                <span>Automatic NFT tokenization</span>
               </div>
               <div className="flex items-center space-x-3">
                 <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>Lancio su piattaforma di raccolta fondi</span>
+                <span>Launch on fundraising platform</span>
               </div>
             </div>
           </motion.div>
@@ -174,63 +174,63 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
             className="space-y-6"
           >
             <div>
-              <h2 className="text-xl font-bold mb-2">Inserimento Dati Impianto</h2>
+              <h2 className="text-xl font-bold mb-2">Enter Plant Data</h2>
               <p className="text-muted-foreground">
-                Fornisci le informazioni tecniche del tuo impianto solare
+                Provide the technical information of your solar plant
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div>
-                  <Label htmlFor="projectName">Nome Progetto</Label>
+                  <Label htmlFor="projectName">Project Name</Label>
                   <Input
                     id="projectName"
-                    placeholder="es. SolarPark Milano Nord"
+                    placeholder="e.g., SolarPark North Milan"
                     value={formData.projectName}
-                    onChange={(e) => setFormData({...formData, projectName: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, projectName: e.target.value })}
                   />
                 </div>
                 <div>
-                  <Label htmlFor="constructionYear">Anno Costruzione</Label>
+                  <Label htmlFor="constructionYear">Year of Construction</Label>
                   <Input
                     id="constructionYear"
                     type="number"
                     placeholder="2023"
                     value={formData.constructionYear}
-                    onChange={(e) => setFormData({...formData, constructionYear: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, constructionYear: e.target.value })}
                   />
                 </div>
                 <div>
-                  <Label htmlFor="capacity">Taglia Impianto (kWp)</Label>
+                  <Label htmlFor="capacity">Plant Size (kWp)</Label>
                   <Input
                     id="capacity"
                     type="number"
                     placeholder="1500"
                     value={formData.capacity}
-                    onChange={(e) => setFormData({...formData, capacity: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, capacity: e.target.value })}
                   />
                 </div>
                 <div>
-                  <Label htmlFor="location">Localizzazione</Label>
+                  <Label htmlFor="location">Location</Label>
                   <Input
                     id="location"
-                    placeholder="Milano, Lombardia"
+                    placeholder="Milan, Lombardy"
                     value={formData.location}
-                    onChange={(e) => setFormData({...formData, location: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                   />
                 </div>
               </div>
 
               <div className="space-y-4">
                 <div>
-                  <Label>Documentazione Richiesta</Label>
+                  <Label>Required Documentation</Label>
                   <div className="space-y-3 mt-2">
                     <Card className="p-3 border-dashed border-primary/30 hover:border-primary/50 transition-colors cursor-pointer">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-2">
                           <Upload className="w-4 h-4 text-primary" />
-                          <span className="text-sm">Visura Catastale</span>
+                          <span className="text-sm">Land Registry Report</span>
                         </div>
                         {uploadedFiles.visura ? (
                           <CheckCircle className="w-4 h-4 text-green-400" />
@@ -239,12 +239,12 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
                         )}
                       </div>
                     </Card>
-                    
+
                     <Card className="p-3 border-dashed border-primary/30 hover:border-primary/50 transition-colors cursor-pointer">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-2">
                           <Upload className="w-4 h-4 text-primary" />
-                          <span className="text-sm">Foto Impianto</span>
+                          <span className="text-sm">Plant Photos</span>
                         </div>
                         {uploadedFiles.photos ? (
                           <CheckCircle className="w-4 h-4 text-green-400" />
@@ -253,12 +253,12 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
                         )}
                       </div>
                     </Card>
-                    
+
                     <Card className="p-3 border-dashed border-primary/30 hover:border-primary/50 transition-colors cursor-pointer">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-2">
                           <Upload className="w-4 h-4 text-primary" />
-                          <span className="text-sm">Documentazione Tecnica</span>
+                          <span className="text-sm">Technical Documentation</span>
                         </div>
                         {uploadedFiles.technical ? (
                           <CheckCircle className="w-4 h-4 text-green-400" />
@@ -282,9 +282,9 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
             className="space-y-6"
           >
             <div>
-              <h2 className="text-xl font-bold mb-2">Verifica Documentale</h2>
+              <h2 className="text-xl font-bold mb-2">Document Verification</h2>
               <p className="text-muted-foreground">
-                Controllo automatico dei documenti e delle autorizzazioni
+                Automated check of documents and authorizations
               </p>
             </div>
 
@@ -296,8 +296,8 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
                       <FileText className="w-5 h-5 text-blue-400" />
                     </div>
                     <div>
-                      <h3 className="font-semibold">Esiti</h3>
-                      <p className="text-sm text-muted-foreground">Controllo autorizzazioni</p>
+                      <h3 className="font-semibold">Status</h3>
+                      <p className="text-sm text-muted-foreground">Authorization Check</p>
                     </div>
                   </div>
                   <Badge className={getStatusColor(verificationStatus.esiti)}>
@@ -315,7 +315,7 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
                     </div>
                     <div>
                       <h3 className="font-semibold">O&M</h3>
-                      <p className="text-sm text-muted-foreground">Operazione e manutenzione</p>
+                      <p className="text-sm text-muted-foreground">Operation & Maintenance</p>
                     </div>
                   </div>
                   <Badge className={getStatusColor(verificationStatus.om)}>
@@ -333,7 +333,7 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
                     </div>
                     <div>
                       <h3 className="font-semibold">TenneT</h3>
-                      <p className="text-sm text-muted-foreground">Connessione rete</p>
+                      <p className="text-sm text-muted-foreground">Grid Connection</p>
                     </div>
                   </div>
                   <Badge className={getStatusColor(verificationStatus.tennet)}>
@@ -351,7 +351,7 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
                     </div>
                     <div>
                       <h3 className="font-semibold">MISE</h3>
-                      <p className="text-sm text-muted-foreground">Ministero sviluppo economico</p>
+                      <p className="text-sm text-muted-foreground">Ministry of Economic Development</p>
                     </div>
                   </div>
                   <Badge className={getStatusColor(verificationStatus.mise)}>
@@ -366,10 +366,9 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
               <div className="flex items-start space-x-3">
                 <AlertCircle className="w-5 h-5 text-blue-400 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-blue-400">Processo di Verifica</h4>
+                  <h4 className="font-semibold text-blue-400">Verification Process</h4>
                   <p className="text-sm text-muted-foreground mt-1">
-                    Il sistema sta verificando automaticamente la documentazione. 
-                    Questo processo può richiedere 24-48 ore per essere completato.
+                    The system is automatically verifying your documentation. This process may take 24–48 hours to complete.
                   </p>
                 </div>
               </div>
@@ -385,51 +384,49 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
             className="space-y-6"
           >
             <div>
-              <h2 className="text-xl font-bold mb-2">SPV & Identità</h2>
+              <h2 className="text-xl font-bold mb-2">SPV & Identity</h2>
               <p className="text-muted-foreground">
-                Configura la Special Purpose Vehicle per il tuo progetto
+                Set up the Special Purpose Vehicle for your project
               </p>
             </div>
 
             <Card className="card-glow p-6">
               <div className="space-y-6">
                 <div>
-                  <Label className="text-base font-semibold">Tipo SPV</Label>
+                  <Label className="text-base font-semibold">SPV Type</Label>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
-                    <Card 
-                      className={`p-4 cursor-pointer transition-all border-2 ${
-                        formData.spvType === 'new' 
-                          ? 'border-primary bg-primary/5' 
-                          : 'border-border hover:border-primary/50'
-                      }`}
-                      onClick={() => setFormData({...formData, spvType: 'new'})}
+                    <Card
+                      className={`p-4 cursor-pointer transition-all border-2 ${formData.spvType === 'new'
+                        ? 'border-primary bg-primary/5'
+                        : 'border-border hover:border-primary/50'
+                        }`}
+                      onClick={() => setFormData({ ...formData, spvType: 'new' })}
                     >
                       <div className="flex items-center space-x-3">
                         <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
                           <Building className="w-5 h-5 text-primary" />
                         </div>
                         <div>
-                          <h3 className="font-semibold">SPV Nuova</h3>
-                          <p className="text-sm text-muted-foreground">Crea una nuova società</p>
+                          <h3 className="font-semibold">New SPV</h3>
+                          <p className="text-sm text-muted-foreground">Create a new company</p>
                         </div>
                       </div>
                     </Card>
 
-                    <Card 
-                      className={`p-4 cursor-pointer transition-all border-2 ${
-                        formData.spvType === 'existing' 
-                          ? 'border-primary bg-primary/5' 
-                          : 'border-border hover:border-primary/50'
-                      }`}
-                      onClick={() => setFormData({...formData, spvType: 'existing'})}
+                    <Card
+                      className={`p-4 cursor-pointer transition-all border-2 ${formData.spvType === 'existing'
+                        ? 'border-primary bg-primary/5'
+                        : 'border-border hover:border-primary/50'
+                        }`}
+                      onClick={() => setFormData({ ...formData, spvType: 'existing' })}
                     >
                       <div className="flex items-center space-x-3">
                         <div className="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center">
                           <Briefcase className="w-5 h-5 text-accent" />
                         </div>
                         <div>
-                          <h3 className="font-semibold">SPV Esistente</h3>
-                          <p className="text-sm text-muted-foreground">Usa società esistente</p>
+                          <h3 className="font-semibold">Existing SPV</h3>
+                          <p className="text-sm text-muted-foreground">Use an existing company</p>
                         </div>
                       </div>
                     </Card>
@@ -440,21 +437,21 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <Label htmlFor="spvName">Denominazione SPV</Label>
+                    <Label htmlFor="spvName">SPV Details</Label>
                     <Input
                       id="spvName"
-                      placeholder="Solar Energy S.r.l."
+                      placeholder="SPV Name: Solar Energy S.r.l."
                       value={formData.spvName}
-                      onChange={(e) => setFormData({...formData, spvName: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, spvName: e.target.value })}
                     />
                   </div>
                   <div>
-                    <Label htmlFor="spvVAT">Partita IVA</Label>
+                    <Label htmlFor="spvVAT">VAT Number</Label>
                     <Input
                       id="spvVAT"
                       placeholder="IT12345678901"
                       value={formData.spvVAT}
-                      onChange={(e) => setFormData({...formData, spvVAT: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, spvVAT: e.target.value })}
                     />
                   </div>
                 </div>
@@ -483,9 +480,9 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
             className="space-y-6"
           >
             <div>
-              <h2 className="text-xl font-bold mb-2">Onboarding Nexcomply</h2>
+              <h2 className="text-xl font-bold mb-2">Nexcomply Onboarding</h2>
               <p className="text-muted-foreground">
-                Processo automatizzato di due diligence e creazione SPV
+                Automated process for due diligence and SPV creation
               </p>
             </div>
 
@@ -498,12 +495,12 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
                     </div>
                     <div>
                       <h3 className="font-semibold">Due Diligence</h3>
-                      <p className="text-sm text-muted-foreground">KYC e verifica identità</p>
+                      <p className="text-sm text-muted-foreground">KYC and identity verification</p>
                     </div>
                   </div>
                   <Badge className="bg-green-500/20 text-green-400">
                     <CheckCircle className="w-4 h-4 mr-1" />
-                    Completato
+                    Completed
                   </Badge>
                 </div>
                 <Progress value={100} className="h-2" />
@@ -516,13 +513,13 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
                       <Building className="w-5 h-5 text-purple-400" />
                     </div>
                     <div>
-                      <h3 className="font-semibold">Creazione SPV</h3>
-                      <p className="text-sm text-muted-foreground">Firma digitale e costituzione</p>
+                      <h3 className="font-semibold">SPV Creation</h3>
+                      <p className="text-sm text-muted-foreground">Digital signature and incorporation</p>
                     </div>
                   </div>
                   <Badge className="bg-yellow-500/20 text-yellow-400">
                     <RefreshCw className="w-4 h-4 mr-1 animate-spin" />
-                    In Corso
+                    In Progress
                   </Badge>
                 </div>
                 <Progress value={65} className="h-2" />
@@ -535,13 +532,13 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
                       <Award className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold">Emissione NFT</h3>
-                      <p className="text-sm text-muted-foreground">Quote SPV tokenizzate</p>
+                      <h3 className="font-semibold">NFT Issuance</h3>
+                      <p className="text-sm text-muted-foreground">Tokenized SPV shares</p>
                     </div>
                   </div>
                   <Badge className="bg-gray-500/20 text-gray-400">
                     <Clock className="w-4 h-4 mr-1" />
-                    In Attesa
+                    Pending
                   </Badge>
                 </div>
                 <Progress value={0} className="h-2" />
@@ -554,13 +551,13 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
                       <Signature className="w-5 h-5 text-accent" />
                     </div>
                     <div>
-                      <h3 className="font-semibold">Firma SFP/UNIT</h3>
-                      <p className="text-sm text-muted-foreground">Contratti e documenti legali</p>
+                      <h3 className="font-semibold">SFP/UNIT Signing</h3>
+                      <p className="text-sm text-muted-foreground">Contracts and legal documents</p>
                     </div>
                   </div>
                   <Badge className="bg-gray-500/20 text-gray-400">
                     <Clock className="w-4 h-4 mr-1" />
-                    In Attesa
+                    Pending
                   </Badge>
                 </div>
                 <Progress value={0} className="h-2" />
@@ -571,10 +568,10 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
               <div className="flex items-start space-x-3">
                 <AlertCircle className="w-5 h-5 text-blue-400 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-blue-400">Processo Automatizzato</h4>
+                  <h4 className="font-semibold text-blue-400">Automated Process</h4>
                   <p className="text-sm text-muted-foreground mt-1">
-                    Il sistema Nexcomply gestisce automaticamente tutti i passaggi legali e burocratici. 
-                    Riceverai notifiche per ogni step completato.
+                    The Nexcomply system automatically handles all legal and bureaucratic steps.
+                    You will receive notifications for each completed step.
                   </p>
                 </div>
               </div>
@@ -590,60 +587,59 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
             className="space-y-6"
           >
             <div>
-              <h2 className="text-xl font-bold mb-2">Raccolta Fondi</h2>
+              <h2 className="text-xl font-bold mb-2">Fundraising</h2>
               <p className="text-muted-foreground">
-                Configura la campagna di raccolta fondi per il tuo progetto
-              </p>
+                Set up the fundraising campaign for your project              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div>
-                  <Label htmlFor="fundingTarget">Target Raccolta (€)</Label>
+                  <Label htmlFor="fundingTarget">Fundraising Target ($)</Label>
                   <Input
                     id="fundingTarget"
                     type="number"
                     placeholder="1250000"
                     value={formData.fundingTarget}
-                    onChange={(e) => setFormData({...formData, fundingTarget: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, fundingTarget: e.target.value })}
                   />
                 </div>
                 <div>
-                  <Label htmlFor="deadline">Scadenza Campagna</Label>
+                  <Label htmlFor="deadline">Campaign Deadline</Label>
                   <Input
                     id="deadline"
                     type="date"
                     value={formData.deadline}
-                    onChange={(e) => setFormData({...formData, deadline: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, deadline: e.target.value })}
                   />
                 </div>
               </div>
 
               <Card className="card-glow p-4">
-                <h3 className="font-semibold mb-3">Anteprima Card Progetto</h3>
+                <h3 className="font-semibold mb-3">Project Card Preview</h3>
                 <div className="space-y-3">
                   <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg flex items-center justify-center">
                     <div className="text-center">
                       <Sun className="w-8 h-8 mx-auto mb-2" />
-                      <p className="text-sm text-muted-foreground">Immagine Progetto</p>
+                      <p className="text-sm text-muted-foreground">Project Image</p>
                     </div>
                   </div>
                   <div>
-                    <h4 className="font-semibold">{formData.projectName || "Nome Progetto"}</h4>
+                    <h4 className="font-semibold">{formData.projectName || "Project Name"}</h4>
                     <p className="text-sm text-muted-foreground flex items-center">
                       <MapPin className="w-3 h-3 mr-1" />
-                      {formData.location || "Localizzazione"}
+                      {formData.location || "Location"}
                     </p>
                   </div>
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
-                      <span>Obiettivo</span>
+                      <span>Goal</span>
                       <span className="font-semibold">€{formData.fundingTarget || "0"}</span>
                     </div>
                     <Progress value={0} className="h-2" />
                     <div className="flex justify-between text-xs text-muted-foreground">
-                      <span>€0 raccolti</span>
-                      <span>0 investitori</span>
+                      <span>$0 raised</span>
+                      <span>0 investors</span>
                     </div>
                   </div>
                 </div>
@@ -654,18 +650,18 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
               <div className="flex items-start space-x-3">
                 <Target className="w-6 h-6 text-green-400 mt-0.5" />
                 <div>
-                  <h4 className="font-semibold text-green-400 mb-2">Pronto per il Lancio</h4>
+                  <h4 className="font-semibold text-green-400 mb-2">Ready for Launch</h4>
                   <p className="text-sm text-muted-foreground mb-4">
-                    Il tuo progetto sarà inserito nella sezione Launchpad e sarà visibile a tutti gli investitori.
+                    Your project will be added to the Launchpad section and will be visible to all investors.
                   </p>
                   <div className="flex items-center space-x-4 text-sm">
                     <div className="flex items-center space-x-2">
                       <Users className="w-4 h-4 text-blue-400" />
-                      <span>Accesso a 15,000+ investitori</span>
+                      <span>Access to 15,000+ investors</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <TrendingUp className="w-4 h-4 text-primary" />
-                      <span>Dashboard analytics in tempo reale</span>
+                      <span>Real-time analytics dashboard</span>
                     </div>
                   </div>
                 </div>
@@ -682,9 +678,9 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
             className="space-y-6"
           >
             <div>
-              <h2 className="text-xl font-bold mb-2">Validazione Impianto</h2>
+              <h2 className="text-xl font-bold mb-2">Plant Validation</h2>
               <p className="text-muted-foreground">
-                Completamento processo e attivazione monitoraggio
+                Finalization process and monitoring activation
               </p>
             </div>
 
@@ -697,13 +693,13 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
                     </div>
                     <div>
                       <h3 className="font-semibold">Upload ENEA/GSE</h3>
-                      <p className="text-sm text-muted-foreground">Certificazioni energetiche</p>
+                      <p className="text-sm text-muted-foreground">Energy certifications</p>
                     </div>
                   </div>
                   {uploadedFiles.enea ? (
                     <Badge className="bg-green-500/20 text-green-400">
                       <CheckCircle className="w-4 h-4 mr-1" />
-                      Caricato
+                      Uploaded
                     </Badge>
                   ) : (
                     <Button size="sm" variant="outline">
@@ -722,17 +718,17 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
                     </div>
                     <div>
                       <h3 className="font-semibold">Sync SCADA</h3>
-                      <p className="text-sm text-muted-foreground">Produzione automatica</p>
+                      <p className="text-sm text-muted-foreground">Automated production</p>
                     </div>
                   </div>
                   <Badge className="bg-green-500/20 text-green-400">
                     <CheckCircle className="w-4 h-4 mr-1" />
-                    Connesso
+                    Connected
                   </Badge>
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  <p>Sistema di monitoraggio collegato con successo</p>
-                  <p>Dati produzione in tempo reale attivi</p>
+                  <p>Monitoring system successfully connected</p>
+                  <p>Real-time production data is active</p>
                 </div>
               </Card>
 
@@ -743,14 +739,14 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
                       <Wallet className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold">Wallet Ricezione Pagamenti</h3>
-                      <p className="text-sm text-muted-foreground">Indirizzo per ricevere i dividendi</p>
+                      <h3 className="font-semibold">Payment Receiving Wallet</h3>
+                      <p className="text-sm text-muted-foreground">Address to receive dividends</p>
                     </div>
                   </div>
                   <Input
                     placeholder="erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s8nr3zpz3hypefsdd8ssycr6th"
                     value={formData.walletAddress}
-                    onChange={(e) => setFormData({...formData, walletAddress: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, walletAddress: e.target.value })}
                   />
                 </div>
               </Card>
@@ -762,13 +758,13 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
                       <FileCheck className="w-5 h-5 text-accent" />
                     </div>
                     <div>
-                      <h3 className="font-semibold">Firma Contratto SFP</h3>
-                      <p className="text-sm text-muted-foreground">Accordo finale</p>
+                      <h3 className="font-semibold">SFP Contract Signing</h3>
+                      <p className="text-sm text-muted-foreground">Final agreement</p>
                     </div>
                   </div>
                   <Button size="sm" className="bg-gradient-to-r from-primary to-accent">
                     <Signature className="w-4 h-4 mr-2" />
-                    Firma Digitale
+                    Digital Signature
                   </Button>
                 </div>
               </Card>
@@ -780,19 +776,19 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
                   <Award className="w-8 h-8 text-green-400" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-green-400">Validazione Completata!</h3>
+                  <h3 className="text-xl font-bold text-green-400">Validation Completed!</h3>
                   <p className="text-muted-foreground">
-                    Il tuo impianto è stato validato con successo e sarà visibile nel marketplace
+                    Your plant has been successfully validated and will be visible on the marketplace.
                   </p>
                 </div>
                 <div className="flex justify-center space-x-4">
                   <Button className="bg-gradient-to-r from-primary to-accent">
                     <PlayCircle className="w-4 h-4 mr-2" />
-                    Vai al Progetto
+                    Go to Project
                   </Button>
                   <Button variant="outline">
                     <Download className="w-4 h-4 mr-2" />
-                    Scarica Certificati
+                    Download Certificate
                   </Button>
                 </div>
               </div>
@@ -811,7 +807,7 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.9 }}
-        className="bg-card w-full max-w-4xl max-h-[90vh] rounded-xl border border-border shadow-2xl overflow-hidden"
+        className="bg-card w-full max-w-4xl max-h-[90vh] rounded-xl border border-border shadow-2xl overflow-y-scroll overflow-x-hidden"
       >
         {/* Header */}
         <div className="border-b border-border p-6">
@@ -821,28 +817,26 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
               ✕
             </Button>
           </div>
-          
+
           {/* Progress Bar */}
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
-              <span>Progresso</span>
+              <span>Progress</span>
               <span>{Math.round(progress)}%</span>
             </div>
             <Progress value={progress} className="h-2" />
           </div>
 
           {/* Steps Timeline */}
-          <div className="mt-6 hidden md:flex items-center justify-between">
+          <div className="mt-6 hidden md:flex items-center justify-between overflow-x-scroll">
             {steps.map((step, index) => (
               <div key={step.id} className="flex items-center">
-                <div className={`flex items-center space-x-2 ${
-                  currentStep >= step.id ? 'text-primary' : 'text-muted-foreground'
-                }`}>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 ${
-                    currentStep >= step.id 
-                      ? 'border-primary bg-primary/20' 
-                      : 'border-muted-foreground bg-muted'
+                <div className={`flex items-center space-x-2 ${currentStep >= step.id ? 'text-primary' : 'text-muted-foreground'
                   }`}>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 ${currentStep >= step.id
+                    ? 'border-primary bg-primary/20'
+                    : 'border-muted-foreground bg-muted'
+                    }`}>
                     {currentStep > step.id ? (
                       <CheckCircle className="w-4 h-4" />
                     ) : (
@@ -854,9 +848,8 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
                   </div>
                 </div>
                 {index < steps.length - 1 && (
-                  <div className={`w-12 h-0.5 mx-2 ${
-                    currentStep > step.id ? 'bg-primary' : 'bg-muted-foreground'
-                  }`} />
+                  <div className={`w-12 h-0.5 mx-2 ${currentStep > step.id ? 'bg-primary' : 'bg-muted-foreground'
+                    }`} />
                 )}
               </div>
             ))}
@@ -879,15 +872,15 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
               disabled={currentStep === 1}
             >
               <ChevronLeft className="w-4 h-4 mr-2" />
-              Precedente
+              Previous
             </Button>
-            
+
             {currentStep < totalSteps ? (
               <Button
                 onClick={nextStep}
                 className="bg-gradient-to-r from-primary to-accent hover:from-primary/80 hover:to-accent/80"
               >
-                Successivo
+                Next
                 <ChevronRight className="w-4 h-4 ml-2" />
               </Button>
             ) : (
@@ -895,7 +888,7 @@ export default function ProjectOnboarding({ onClose }: ProjectOnboardingProps) {
                 onClick={onClose}
                 className="bg-gradient-to-r from-primary to-accent hover:from-primary/80 hover:to-accent/80"
               >
-                Completa Onboarding
+                Complete Onboarding
                 <CheckCircle className="w-4 h-4 ml-2" />
               </Button>
             )}
