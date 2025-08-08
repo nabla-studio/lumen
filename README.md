@@ -1,6 +1,6 @@
 # Lumen
 
-Your next energy investment.
+LUMEN is a Web3-powered launchpad for tokenized renewable energy assets, enabling ESG-aligned investments in large-scale solar, wind, and other clean energy projects. Each initiative is structured through a dedicated SPV, with ownership or revenue rights represented as NFTs or SFPs under EU-compliant frameworks. Investors can participate from €500, benefiting from on-chain transparency, automated profit distribution, and secondary market liquidity under DLT Pilot principles. By merging tokenization-as-a-service, compliance-by-design, and scalable governance, LUMEN bridges traditional project finance with decentralized capital markets, accelerating global access to renewable infrastructure financing.
 
 ## Get started
 
