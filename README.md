@@ -29,6 +29,10 @@ Sustainability & Green Tech – LUMEN leverages Hedera Guardian, an open-source,
 #
 #
 
+Pitchdeck: https://github.com/nabla-studio/lumen/tree/1845a7970cb4880cc81c93b2acb164735ebcb352/docs
+
+Video: https://youtu.be/uxZDuzEAh_k
+
 PoC: https://lumen.nexcomply.studio
     @: https://discord.gg/Ck92Eksn46  
 
